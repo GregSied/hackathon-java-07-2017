@@ -17,11 +17,11 @@ public class JobService {
     @Autowired
     JobRepository jobRepository;
 
-    public void addNewJob (Job job) {jobRepository.save(job);};
+    public void addNewJob (Job job) {jobRepository.save(job);}
     public void updateJob (Job job){jobRepository.save(job);
     }
 
-    public Job findJobById(Long id){
+    public Job findJobrById(Long id){
         return jobRepository.findById(id);
     }
 
@@ -30,7 +30,7 @@ public class JobService {
     }
 
     public List<Job> findJobsByNameLike(String nameSubstring){
-        return jobRepository.getByNameLike(nameSubstring);
+        return jobRepository.findByNameLike(nameSubstring);
     }
 
     public void deleteEmployerProfile(Job job){jobRepository.delete(job);
