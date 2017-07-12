@@ -13,16 +13,18 @@ public class Job {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    Long employer_id;
-    // TODO: 2017-07-12 sql column names
-    String jobTitle;
-    String jobDescription;
-    String skills;
-    String conditions;
-    String benefits;
-    int salary_low;
-    int salary_high;
+    private Long id;
+    private Long id_employer;
+    @Column(name = "job_title")
+    private String jobTitle;
+    @Column(name = "job_description")
+    private String jobDescription;
+    private String conditions;
+    private String benefits;
+    @Column(name = "salary_low")
+    private int salaryLow;
+    @Column(name = "salary_high")
+    private int salaryHigh;
 
     public Job() {
     }

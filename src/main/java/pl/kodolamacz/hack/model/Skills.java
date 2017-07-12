@@ -12,5 +12,5 @@ import javax.persistence.Table;
 
 public enum Skills {
 
-    JAVA, JAVASCRIPT, HTML, CSS, ANGULAR, SPRING, HIBERNATE, SQL
+    JAVA, JAVASCRIPT, HTML, CSS, ANGULAR, SPRING, HIBERNATE, SQL, MOCKITO, GIT, MAVEN
 }
