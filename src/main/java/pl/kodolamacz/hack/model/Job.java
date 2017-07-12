@@ -26,6 +26,12 @@ public class Job {
     @NotNull
     private String conditions;
 
+    private String benefits;
+    @Column(name = "salary_low")
+    private int salaryLow;
+    @Column(name = "salary_high")
+    private int salaryHigh;
+
     public Long getEmployerId() {
         return employerId;
     }
@@ -81,11 +87,5 @@ public class Job {
     public void setSalaryHigh(int salaryHigh) {
         this.salaryHigh = salaryHigh;
     }
-
-    private String benefits;
-    @Column(name = "salary_low")
-    private int salaryLow;
-    @Column(name = "salary_high")
-    private int salaryHigh;
 
 }
