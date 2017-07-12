@@ -4,7 +4,7 @@ CREATE DATABASE hack;
 
 -- user
 DROP USER IF EXISTS hack;
-CREATE USER hack WITH PASSWORD 'hack';
+CREATE USER hack WITH PASSWORD 'hack123';
 
 -- privileges
 GRANT ALL PRIVILEGES ON DATABASE hack TO hack;
