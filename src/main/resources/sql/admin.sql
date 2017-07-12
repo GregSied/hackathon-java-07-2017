@@ -1,0 +1,12 @@
+-- database
+DROP DATABASE IF EXISTS hack;
+CREATE DATABASE hack;
+
+-- user
+DROP USER IF EXISTS hack;
+CREATE USER hack WITH PASSWORD 'hack';
+
+-- privileges
+GRANT ALL PRIVILEGES ON DATABASE hack TO hack;
+GRANT USAGE ON SCHEMA public TO hack;
+ALTER USER hack WITH SUPERUSER;
