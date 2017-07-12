@@ -36,6 +36,5 @@ public class CandidateService {
     }
     public void removeCandidateProfile(Long id){
         candidateRepository.delete(id);
-    }
+    }}
 
-}

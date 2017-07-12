@@ -34,6 +34,21 @@ public class EmployerController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "editEmployer.html", method = RequestMethod.GET)
+    public ModelAndView showEditEmployer(@RequestParam Long id){
+        return new ModelAndView(
+                "/employerView/editEmployer","employer", employerService.findEmployerById(id));
+    }
+
+    @RequestMapping(value = "editEmployer.html",method = RequestMethod.POST)
+    public ModelAndView editEmployer(@Valid Employer employer, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return new ModelAndView("/employerView/editEmployer");
+        }
+        employerService.updateEmployerProfile(employer);
+        return new ModelAndView("/employerView/editEmployerConfirmation");
+    }
+
 
     //REMOVE Employer
     @RequestMapping(value="removeEmployer.html", method= RequestMethod.GET)
