@@ -12,14 +12,14 @@
 <h1>Edit job</h1>
 <f:form method="post" modelAttribute="job">
     <div>Title: </div>
-    <f:input path="jobTitle"/>
+    <f:input path="title"/>
     <p>
-        <f:errors path="jobTitle"/>
+        <f:errors path="title"/>
     </p>
     <div>Description: </div>
-    <f:input path="jobDescription"/>
+    <f:input path="description"/>
     <p>
-        <f:errors path="jobDescription"/>
+        <f:errors path="description"/>
     </p>
 
     <div>Conditions: </div>

@@ -16,7 +16,7 @@ public interface EmployerRepository extends CrudRepository<Employer, Long> {
 
     List<Employer> findByName(String name);
 
-    List<Employer> findByLocationContainig(String search);
+    List<Employer> findByLocationContaining(String search);
 
     List<Employer> getByNameLike(String nameSubstring);
 }

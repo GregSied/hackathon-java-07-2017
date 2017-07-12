@@ -7,7 +7,7 @@
     <title>Job</title>
 </head>
 <body>
-<h1>This is the data for job: ${foundJob.jobTitle}</h1>
+<h1>This is the data for job: ${foundJob.title}</h1>
 
 Title: ${foundJob.title}<br>
 Description: ${foundJob.description}<br>
