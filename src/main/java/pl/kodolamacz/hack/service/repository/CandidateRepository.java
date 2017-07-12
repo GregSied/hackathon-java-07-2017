@@ -17,4 +17,5 @@ public interface CandidateRepository extends CrudRepository<Candidate, Long> {
     @Query("select c from candidate where c.[name] like %?1%")
     public List<Candidate> getByNameLike(String search);
 
+    //Sasha grey was here
 }
