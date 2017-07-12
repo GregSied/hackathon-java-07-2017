@@ -34,7 +34,7 @@ public class EmployerService {
     }
 
     public List<Employer> findEmployersByNameLike(String nameSubstring){
-        return employerRepository.findByNameLike(nameSubstring);
+        return employerRepository.getByNameLike(nameSubstring);
     }
 
     public void deleteEmployerProfile(Employer employer){

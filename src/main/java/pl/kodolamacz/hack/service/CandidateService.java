@@ -16,6 +16,10 @@ public class CandidateService {
     @Autowired
     private CandidateRepository candidateRepository;
 
+    public void addCandidate(Candidate candidate){
+        candidateRepository.save(candidate);
+    }
+
     public Iterable<Candidate> findAllCandidate(){
         return candidateRepository.findAll();
     }
@@ -32,8 +36,5 @@ public class CandidateService {
     }
     public void removeCandidateProfile(Long id){
         candidateRepository.delete(id);
-    }
+    }}
 
-
-
-}

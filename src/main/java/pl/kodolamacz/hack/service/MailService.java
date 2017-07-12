@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
+import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Employer;
 
 /**
@@ -18,12 +19,12 @@ import pl.kodolamacz.hack.model.Employer;
         private MailSender mailSender;
 
 
-        public void sendEmail(Candidate candidate,Employer employer) {
+        public void sendEmail(Candidate candidate, Employer employer) {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom("aksjofqwl@o2.pl");
-            message.setTo(candidate.getCandidateEmail);
+            message.setTo(candidate.getEmail());
 
-            message.setSubject("Wiadomość od :"+employer.getName);
+            message.setSubject("Wiadomość od :"+employer.getName());
             message.setText("Wiadomość testowa");
 
             mailSender.send(message);

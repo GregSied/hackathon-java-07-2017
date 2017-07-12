@@ -28,8 +28,14 @@
 </li>
 
 <li>
-    <a href="register.html">
-        <s:message code="index.register"/>
+    <a href="registerEmployer.html">
+        Register as Employer
+    </a>
+</li>
+
+<li>
+    <a href="registerCandidate.html">
+        Register as Candidate
     </a>
 </li>
 <br>
