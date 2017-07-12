@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import pl.kodolamacz.hack.model.Employer;
 
 /**
- * Created by Jasiek on 12.07.2017.
+ * Created by 8760w on 2017-07-12.
  */
-public interface EmployerRepository extends CrudRepository<Employer, Long> {
+public interface CandidateRepository extends CrudRepository<Candidate, Long> {
 }
