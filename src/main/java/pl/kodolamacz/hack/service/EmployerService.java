@@ -21,12 +21,20 @@ public class EmployerService {
         employerRepository.save(employer);
     }
 
+    public Employer findEmployerById(Long id){
+        return employerRepository.findById(id);
+    }
+
     public Iterable<Employer> findAllEmployers(){
         return employerRepository.findAll();
     }
 
-    public List<Employer> findEmployerByName(String name){
+    public List<Employer> findEmployersByName(String name){
         return employerRepository.findByName(name);
+    }
+
+    public List<Employer> findEmployersByNameLike(String nameSubstring){
+        return employerRepository.findByNameLike(nameSubstring);
     }
 
     public void deleteEmployerProfile(Employer employer){
