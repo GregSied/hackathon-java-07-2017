@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import pl.kodolamacz.hack.service.CandidateService;
 
 import javax.validation.Valid;
 
@@ -25,16 +26,16 @@ public class CandidateControler {
 
 
     @RequestMapping(value = "addCandidate.html",method = RequestMethod.GET)
-    public ModelAndView showAddClient(){
-        return new ModelAndView("/clientView/addClient","client", new Client());
+    public ModelAndView showAddCandidate(){
+        return new ModelAndView("/candidateView/addCandidate","candidate", new Candidate());
     }
 
-    @RequestMapping(value = "addClient.html",method = RequestMethod.POST)
-    public ModelAndView addClient(@Valid Client client, BindingResult bindingResult){
+    @RequestMapping(value = "addCandidate.html",method = RequestMethod.POST)
+    public ModelAndView addClient(@Valid Candidate candidate, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
-            return new ModelAndView("/clientView/addClient");
+            return new ModelAndView("/candidateView/addCandidate");
         }
-        clientService.saveClient(client);
-        return new ModelAndView("/clientView/addClientConfirmation");
+        candidateService.saveCandidate(candidate);
+        return new ModelAndView("/clientView/addCandidateConfirmation");
     }
 }
