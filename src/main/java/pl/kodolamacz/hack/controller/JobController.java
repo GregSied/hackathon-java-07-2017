@@ -3,7 +3,6 @@ package pl.kodolamacz.hack.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,19 +54,4 @@ public class JobController {
         jobService.updateJob(job);
         return new ModelAndView("jobViews/editJobConfirmation");
     }
-
-    @RequestMapping(value = "add-job-form.html", method = RequestMethod.POST)
-    public ModelAndView saveJob(@Valid @ModelAttribute Job job, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("/jobViews/addJobForm");
-        }
-        jobService.addNewJob(job);
-        return new ModelAndView("addJobConfirmation", "job", job);
-    }
-
-
-
-
-
-
 }
