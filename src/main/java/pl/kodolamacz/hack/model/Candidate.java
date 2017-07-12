@@ -14,7 +14,6 @@ public class Candidate extends AbstractEntity {
 
     @Column(name = "first_name")
     @NotNull
-
     private String firstName;
     @NotNull
     @Column(name = "last_name")
@@ -75,5 +74,7 @@ public class Candidate extends AbstractEntity {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 
 }
