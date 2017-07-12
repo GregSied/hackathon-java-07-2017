@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Table(name = "candidate")
 public class Candidate {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -18,17 +17,17 @@ public class Candidate {
     String lastName;
     int age;
     String hobbies;
-    String candidateEmail;
+    String email;
 
     public Candidate() {
     }
 
-    public Candidate(String firstName, String lastName, int age, String hobbies, String candidateEmail) {
+    public Candidate(String firstName, String lastName, int age, String hobbies, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.hobbies = hobbies;
-        this.candidateEmail = candidateEmail;
+        this.email = email;
     }
 
     public Long getId() {
@@ -71,11 +70,12 @@ public class Candidate {
         this.hobbies = hobbies;
     }
 
-    public String getCandidateEmail() {
-        return candidateEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCandidateEmail(String candidateEmail) {
-        this.candidateEmail = candidateEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
 }

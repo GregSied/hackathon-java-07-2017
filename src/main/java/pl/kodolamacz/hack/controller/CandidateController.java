@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.service.CandidateService;
 
 import javax.validation.Valid;
