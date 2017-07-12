@@ -15,7 +15,8 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "employerId")
+    @Column(name = "id_employer")
+
     private Long employerId;
     @Column(name = "job_title")
     @NotNull
