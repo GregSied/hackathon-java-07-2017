@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  * Created by Pingwinek on 2017-07-12.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring.xml")
+@ContextConfiguration({"classpath:spring.xml", "classpath:repository.xml","classpath:mail.xml"})
 public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Autowired
