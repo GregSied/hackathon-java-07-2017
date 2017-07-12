@@ -49,7 +49,6 @@ public class EmployerController {
         return new ModelAndView("/employerView/editEmployerConfirmation");
     }
 
-
     //REMOVE Employer
     @RequestMapping(value="removeEmployer.html", method= RequestMethod.GET)
     public ModelAndView removeCandidate(@RequestParam(name="id") Long id){

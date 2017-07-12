@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kodolamacz.hack.model.Candidate;
+import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.service.CandidateService;
 
 import javax.validation.Valid;
@@ -71,5 +72,13 @@ public class CandidateController {
     public ModelAndView editCandidate(@Valid Candidate candidate){
         candidateService.updateCandidateProfile(candidate.getId(), candidate);
         return new  ModelAndView("candidateViews/editCandidateConfirmation");
+    }
+    //show list of employers
+    @RequestMapping(value = "showListOfCandidate.html")
+    public ModelAndView showListOfCandidate(){
+        Iterable<Candidate> allCandidates = candidateService.findAllCandidate();
+        ModelAndView modelAndView = new ModelAndView("candidateViews/listOfCandidates");
+        modelAndView.addObject("allCandidates", allCandidates);
+        return modelAndView;
     }
 }
