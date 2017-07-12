@@ -17,7 +17,7 @@ public interface JobRepository extends CrudRepository<Job, Long> {
 
     List<Job> findByName(String name);
 
-    List<Job> findByJobTitleContaining(String search);
+    List<Job> findByTitleContaining(String search);
 
     List<Job> getByNameLike(String nameSubstring);
 

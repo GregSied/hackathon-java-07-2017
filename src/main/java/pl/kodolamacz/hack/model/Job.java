@@ -14,12 +14,12 @@ public class Job extends AbstractEntity {
 
     @Column(name = "employerId")
     private Long employerId;
-    @Column(name = "job_title")
+    @Column(name = "title")
     @NotNull
-    private String jobTitle;
+    private String title;
     @NotNull
-    @Column(name = "job_description")
-    private String jobDescription;
+    @Column(name = "description")
+    private String description;
     @NotNull
     private String conditions;
     private String benefits;
@@ -31,10 +31,10 @@ public class Job extends AbstractEntity {
     public Job() {
     }
 
-    public Job(Long employerId, String jobTitle, String jobDescription, String conditions, String benefits, int salaryLow, int salaryHigh) {
+    public Job(Long employerId, String title, String description, String conditions, String benefits, int salaryLow, int salaryHigh) {
         this.employerId = employerId;
-        this.jobTitle = jobTitle;
-        this.jobDescription = jobDescription;
+        this.title = title;
+        this.description = description;
         this.conditions = conditions;
         this.benefits = benefits;
         this.salaryLow = salaryLow;
@@ -42,20 +42,20 @@ public class Job extends AbstractEntity {
     }
 
 
-    public String getJobTitle() {
-        return jobTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getJobDescription() {
-        return jobDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getConditions() {
