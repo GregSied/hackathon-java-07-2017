@@ -24,7 +24,7 @@ public class JobController {
     @RequestMapping("show-jobs.html")
     public ModelAndView getAllJob() {
         ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
-        modelAndView.addObject("jobs", jobService.findAllJob());
+        modelAndView.addObject("jobs", jobService.findAllJobs());
         modelAndView.addObject("job", new Job());
         return modelAndView;
     }
