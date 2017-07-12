@@ -36,7 +36,7 @@ public class JobService {
     public void deleteEmployerProfile(Job job){jobRepository.delete(job);
     }
 
-    public void deleteJobProfileById(Long id){
+    public void deleteById(Long id) {
         jobRepository.delete(id);
     }
 
