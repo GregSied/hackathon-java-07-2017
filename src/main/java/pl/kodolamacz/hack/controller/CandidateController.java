@@ -61,7 +61,7 @@ public class CandidateController {
     public ModelAndView showUpdateCandidate(@RequestParam long id){
         Map<String, Object> paramters = new HashMap<>();
         paramters.put("candidate", candidateService.findCandidateProfileId(id));
-        return new ModelAndView("/candidateView/editCandidateForm", paramters);
+        return new ModelAndView("candidateViews/editCandidateForm", paramters);
 
     }
 
@@ -69,6 +69,6 @@ public class CandidateController {
     @RequestMapping(value = "updateCandidate.html", method = RequestMethod.POST)
     public ModelAndView editCandidate(@Valid Candidate candidate){
         candidateService.updateCandidateProfile(candidate.getId(), candidate);
-        return new  ModelAndView("/candidateView/editCandidateConfirmation");
+        return new  ModelAndView("candidateViews/editCandidateConfirmation");
     }
 }
