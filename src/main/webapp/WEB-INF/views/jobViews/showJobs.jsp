@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title><s:message code="indexEmployee.title"/></title>
+    <title><s:message code="index.lookForJobOffers"/></title>
     <style>
         table {
             width:60%;

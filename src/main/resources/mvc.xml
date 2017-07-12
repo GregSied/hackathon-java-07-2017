@@ -12,6 +12,7 @@
     <mvc:annotation-driven/>
     <context:component-scan base-package="pl.kodolamacz.hack.controller"/>
     <context:component-scan base-package="pl.kodolamacz.hack.service"/>
+    <context:component-scan base-package="pl.kodolamacz.hack.model"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
