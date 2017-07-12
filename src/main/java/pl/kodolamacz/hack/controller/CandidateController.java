@@ -44,4 +44,12 @@ public class CandidateController {
         candidateService.addCandidate(candidate);
         return new ModelAndView("candidateViews/addCandidateConfirmation", "candidate", candidate);
     }
+
+
+    //SHOW PROFIL BY ID
+    @RequestMapping(value = "candidateProfile.html")
+    public ModelAndView showClientProfile(@RequestParam(name="id") Long id){
+        return new ModelAndView(
+                "/candidateView/candidateProfile","candidate", candidateService.findCandidateProfileId(id));
+    }
 }
