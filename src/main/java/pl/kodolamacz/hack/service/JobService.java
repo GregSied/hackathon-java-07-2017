@@ -9,19 +9,18 @@ import java.util.List;
 
 /**
  * Created by Lukasz on 12.07.2017.
- */
-@Service
+ */@Service
 public class JobService {
 
 
     @Autowired
     JobRepository jobRepository;
 
-    public void addNewJob (Job job) {jobRepository.save(job);};
+    public void addNewJob (Job job) {jobRepository.save(job);}
     public void updateJob (Job job){jobRepository.save(job);
     }
 
-    public Job findJobById(Long id){
+    public Job findJobrById(Long id){
         return jobRepository.findById(id);
     }
 
@@ -30,7 +29,7 @@ public class JobService {
     }
 
     public List<Job> findJobsByNameLike(String nameSubstring){
-        return jobRepository.getByNameLike(nameSubstring);
+        return jobRepository.findByNameLike(nameSubstring);
     }
 
     public void deleteEmployerProfile(Job job){jobRepository.delete(job);
@@ -44,4 +43,8 @@ public class JobService {
         return jobRepository.findAll();
     }
 
+    public List<Job> searchJob(String name) {
+        return jobRepository.findByName(name);
+
+    }
 }
