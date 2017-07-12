@@ -41,7 +41,7 @@ public class JobController {
     @RequestMapping (value ="edit-job.html", method = RequestMethod.GET)
     public ModelAndView showEditJob(@RequestParam(name="id")Long id){
         ModelAndView modelAndView = new ModelAndView("jobViews/editJob");
-        modelAndView.addObject(jobService.findJobrById(id));
+        modelAndView.addObject(jobService.findJobById(id));
         return modelAndView;
     }
 
