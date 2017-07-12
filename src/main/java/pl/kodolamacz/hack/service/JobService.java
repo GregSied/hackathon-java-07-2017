@@ -35,16 +35,21 @@ public class JobService {
     public void deleteEmployerProfile(Job job){jobRepository.delete(job);
     }
 
-    public void deleteJobProfileById(Long id){
+    public void deleteById(Long id) {
         jobRepository.delete(id);
     }
 
-    public Iterable<Job> findAllJobs(){
+    public Iterable<Job> findAllJob(){
         return jobRepository.findAll();
     }
 
     public List<Job> searchJob(String name) {
         return jobRepository.findByName(name);
 
+    }
+
+
+    public Job findJobById(Long id) {
+        return null;
     }
 }
