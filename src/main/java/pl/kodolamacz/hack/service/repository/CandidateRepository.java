@@ -1,5 +1,6 @@
 package pl.kodolamacz.hack.service.repository;
 
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import pl.kodolamacz.hack.model.Candidate;
