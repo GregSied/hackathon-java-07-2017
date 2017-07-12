@@ -19,7 +19,7 @@ public class JobController {
     @RequestMapping("show-jobs.html")
     public ModelAndView getAllJob() {
         ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
-        modelAndView.addObject("jobs", jobService.findAllJob()); //TODO IMPLEMENT METHOD
+        modelAndView.addObject("jobs", jobService.findAllJobs()); //TODO IMPLEMENT METHOD
         return modelAndView;
     }
 }
