@@ -15,37 +15,42 @@ public class JobService {
     @Autowired
     JobRepository jobRepository;
 
-    public void addNewJob (Job job) {jobRepository.save(job);};
-    public void updateJob (Job job){jobRepository.save(job);
+    public void addNewJob(Job job) {
+        jobRepository.save(job);
     }
 
-    public Job findJobById(Long id){
+
+
+    public void updateJob(Job job) {
+        jobRepository.save(job);
+    }
+
+    public Job findJobById(Long id) {
         return jobRepository.findById(id);
     }
 
-    public List<Job> findJobsByName(String name){
+    public List<Job> findJobsByName(String name) {
         return jobRepository.findByName(name);
     }
 
-    public List<Job> findJobsByNameLike(String nameSubstring){
+    public List<Job> findJobsByNameLike(String nameSubstring) {
         return jobRepository.getByNameLike(nameSubstring);
     }
 
     // public void deleteEmployerProfile(Job job){jobRepository.delete(job);
-   // }
+    // }
 
     public void deleteById(Long id) {
         jobRepository.delete(id);
     }
 
-    public List<Job> findJobsByEmployerId(Long employerId){
+    public List<Job> findJobsByEmployerId(Long employerId) {
         return jobRepository.findJobsByEmployerId(employerId);
     }
 
-
-
-
-
+    public List<Job> findAllJob() {
+        return jobRepository.findAllJob();
+    }
 
 
 }
