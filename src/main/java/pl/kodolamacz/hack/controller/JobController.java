@@ -2,6 +2,8 @@ package pl.kodolamacz.hack.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +35,14 @@ public class JobController {
         modelAndView.addObject("jobs", jobService.searchJob(job.getJobTitle()));
         modelAndView.addObject("job", job);
 
+        return modelAndView;
+    }
+
+    @RequestMapping("displayJob.html")
+    public ModelAndView displayAJob(@RequestParam Long id){
+        ModelAndView modelAndView = new ModelAndView("jobViews/displayJob");
+        Job foundJob = jobService.findJobById(id);
+        modelAndView.addObject("foundJob", foundJob);
         return modelAndView;
     }
 }
