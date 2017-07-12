@@ -1,7 +1,10 @@
 package pl.kodolamacz.hack.service.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Employer;
+
+import java.util.List;
 
 public interface CandidateRepository extends CrudRepository<Candidate, Long> {
 

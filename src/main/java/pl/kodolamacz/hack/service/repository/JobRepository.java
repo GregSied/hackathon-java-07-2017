@@ -1,6 +1,9 @@
 package pl.kodolamacz.hack.service.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import pl.kodolamacz.hack.model.Job;
+
+import java.util.List;
 
 /**
  * Created by 8760w on 2017-07-12.
