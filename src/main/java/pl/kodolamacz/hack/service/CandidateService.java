@@ -2,6 +2,7 @@ package pl.kodolamacz.hack.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.kodolamacz.hack.service.repository.CandidateRepository;
 
 import java.util.List;
 
@@ -16,21 +17,22 @@ public class CandidateService {
 
     private CandidateRepository candidateRepository;
 
-    public List<Candidate> findAllCandidate(){
-        return candidateRepository.findAllCandidate();
+    public Iterable<Candidate> findAllCandidate(){
+        return candidateRepository.findAll();
     }
 
-    public Candidate findCandidateById(int id){return candidateRepository.findCandidateById(id);}
+    public Candidate findCandidateById(Long id){
+        return candidateRepository.findOne(id);}
 
     public void addCandidate(Candidate candidate){
-        candidateRepository.addCandidate(candidate);
+        candidateRepository.save(candidate);
     }
 
     public void updateCandidateDetails(Candidate candidate){
-        candidateRepository.changeCandidateDetails(candidate);
+        candidateRepository.save(candidate);
     }
-    public void removeCandidate(int id){
-        candidateRepository.removeCandidate(id);
+    public void removeCandidate(Long id){
+        candidateRepository.delete(id);
     }
 
 
