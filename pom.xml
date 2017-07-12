@@ -127,6 +127,7 @@
     </dependencies>
 
     <build>
+        <finalName>hackathon</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -134,4 +135,5 @@
             </resource>
         </resources>
     </build>
+
 </project>
