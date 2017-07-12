@@ -20,7 +20,7 @@ public class JobService {
     public void updateJob (Job job){jobRepository.save(job);
     }
 
-    public Job findJobrById(Long id){
+    public Job findJobById(Long id){
         return jobRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class JobService {
     public void deleteEmployerProfile(Job job){jobRepository.delete(job);
     }
 
-    public void deleteJobProfileById(Long id){
+    public void deleteById(Long id) {
         jobRepository.delete(id);
     }
 
