@@ -39,7 +39,5 @@ public class CandidateService {
     }
 
 
-    public void addCandidate(Candidate candidate) {
 
-    }
 }
