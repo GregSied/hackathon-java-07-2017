@@ -24,7 +24,7 @@ import pl.kodolamacz.hack.model.Employer;
             message.setFrom("aksjofqwl@o2.pl");
             message.setTo(candidate.getEmail());
 
-            message.setSubject("Wiadomość od :"+employer.getEmployerName());
+            message.setSubject("Wiadomość od :"+employer.getName());
             message.setText("Wiadomość testowa");
 
             mailSender.send(message);
