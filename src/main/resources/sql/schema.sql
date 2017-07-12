@@ -18,7 +18,7 @@ CREATE TABLE candidate(
   last_name       TEXT NOT NULL,
   email           TEXT NOT NULL,
   age             TEXT NOT NULL,
-  hobbies         TEXT NOT NULL,
+  hobbies         TEXT NOT NULL
 );
 
 CREATE TABLE job(
