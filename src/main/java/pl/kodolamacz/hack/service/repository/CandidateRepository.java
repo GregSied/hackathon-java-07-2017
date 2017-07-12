@@ -15,7 +15,6 @@ public interface CandidateRepository extends CrudRepository<Candidate, Long> {
 
     List<Candidate> findByName(String name);
 
-    @Query("select c from candidate where c.[name] like %?1%")
-    public List<Candidate> getByNameLike(String search);
+    List<Candidate> findByLastNamenContainig(String search);
 
 }
