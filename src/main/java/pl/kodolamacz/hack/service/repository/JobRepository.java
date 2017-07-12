@@ -14,7 +14,5 @@ public interface JobRepository extends CrudRepository<Job, Long> {
 
     List<Job> findByName(String name);
 
-    @Query("select j from job where j.[name] like %?1%")
-    public List<Job> getByNameLike(String search);
-
+    List<Job> findByJobTitleContainig(String search);
 }
