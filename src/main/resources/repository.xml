@@ -10,7 +10,7 @@
        http://www.springframework.org/schema/data/jpa
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <jpa:repositories base-package="pl.kodolamacz.hack.repository"/>
+    <jpa:repositories base-package="pl.kodolamacz.hack.service.repository"/>
 
     <context:property-placeholder location="repository.properties"/>
 

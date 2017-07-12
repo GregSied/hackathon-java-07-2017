@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Table(name = "candidate")
 public class Candidate {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -23,12 +22,12 @@ public class Candidate {
     public Candidate() {
     }
 
-    public Candidate(String firstName, String lastName, int age, String hobbies, String candidateEmail) {
+    public Candidate(String firstName, String lastName, int age, String hobbies, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.hobbies = hobbies;
-        this.email = candidateEmail;
+        this.email = email;
     }
 
     public Long getId() {
@@ -78,4 +77,5 @@ public class Candidate {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }
