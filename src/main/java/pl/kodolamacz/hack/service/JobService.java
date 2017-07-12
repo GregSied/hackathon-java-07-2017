@@ -49,7 +49,5 @@ public class JobService {
     }
 
 
-    public Job findJobById(Long id) {
-        return null;
-    }
+
 }
