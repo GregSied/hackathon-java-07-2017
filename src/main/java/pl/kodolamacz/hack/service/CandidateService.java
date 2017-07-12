@@ -21,17 +21,17 @@ public class CandidateService {
         return candidateRepository.findAll();
     }
 
-    public Candidate findCandidateById(Long id){
+    public Candidate findCandidateProfileId(Long id){
         return candidateRepository.findOne(id);}
 
-    public void addCandidate(Candidate candidate){
+    public void addCandidateProfile(Candidate candidate){
         candidateRepository.save(candidate);
     }
 
-    public void updateCandidateDetails(Candidate candidate){
+    public void updateCandidateProfile(Candidate candidate){
         candidateRepository.save(candidate);
     }
-    public void removeCandidate(Long id){
+    public void removeCandidateProfile(Long id){
         candidateRepository.delete(id);
     }
 
