@@ -11,6 +11,4 @@
 
     <context:component-scan base-package="pl.kodolamacz.hack.service"/>
 
-    <!--<import resource="classpath:dao.xml"/>-->
-
 </beans>

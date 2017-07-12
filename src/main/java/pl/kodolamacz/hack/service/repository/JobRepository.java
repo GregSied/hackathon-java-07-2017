@@ -15,12 +15,12 @@ public interface JobRepository extends CrudRepository<Job, Long> {
 
     Job findById(Long id);
 
-    List<Job> findByName(String name);
+    List<Job> findByTitle(String title);
 
     List<Job> findByTitleContaining(String search);
 
-    List<Job> getByNameLike(String nameSubstring);
+    List<Job> getByTitleLike(String titleSubstring);
 
-    List<Job> findByNameLike(String nameSubstring);
+    List<Job> findByTitleLike(String titleSubstring);
     Job deleteById(Long id);
 }

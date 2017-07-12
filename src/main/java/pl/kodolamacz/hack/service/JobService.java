@@ -24,12 +24,12 @@ public class JobService {
         return jobRepository.findById(id);
     }
 
-    public List<Job> findJobsByName(String name){
-        return jobRepository.findByName(name);
+    public List<Job> findJobsByName(String title){
+        return jobRepository.findByTitle(title);
     }
 
-    public List<Job> findJobsByNameLike(String nameSubstring){
-        return jobRepository.findByNameLike(nameSubstring);
+    public List<Job> findJobsByNameLike(String titleSubstring){
+        return jobRepository.findByTitleLike(titleSubstring);
     }
 
     public void deleteEmployerProfile(Job job){jobRepository.delete(job);
@@ -43,8 +43,8 @@ public class JobService {
         return jobRepository.findAll();
     }
 
-    public List<Job> searchJob(String name) {
-        return jobRepository.findByName(name);
+    public List<Job> searchJob(String title) {
+        return jobRepository.findByTitle(title);
 
     }
 
