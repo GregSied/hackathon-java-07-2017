@@ -10,7 +10,7 @@
 <h1>Zarejestruj się jako pracodawca</h1>
 <f:form method="post" modelAttribute="employer">
     <div class="form-label">Name of the company:</div>
-    <f:input path="employerName"/>
+    <f:input path="jobTitle"/>
     <f:errors path="employerName"/>
 
     <div class="form-label">E-mail:</div>
