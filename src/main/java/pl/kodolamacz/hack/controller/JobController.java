@@ -28,15 +28,6 @@ public class JobController {
         modelAndView.addObject("job", new Job());
         return modelAndView;
     }
-    //Search  JOBS
-    @RequestMapping("show-jobs.html")
-    public ModelAndView searchJob(@ModelAttribute Job job) {
-        ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
-        modelAndView.addObject("jobs", jobService.searchJob(job.getTitle()));
-        modelAndView.addObject("job", job);
-
-        return modelAndView;
-    }
 
     @RequestMapping("displayJob.html")
     public ModelAndView displayAJob(@RequestParam Long id){
