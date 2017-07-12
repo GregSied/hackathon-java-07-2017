@@ -9,11 +9,8 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "skill")
-public class Skill {
+public class Skill extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @NotNull
     private String name;
@@ -21,13 +18,6 @@ public class Skill {
     public Skill() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

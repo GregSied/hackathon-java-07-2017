@@ -49,7 +49,6 @@ public class EmployerController {
         return new ModelAndView("/employerView/editEmployerConfirmation");
     }
 
-
     //REMOVE Employer
     @RequestMapping(value="removeEmployer.html", method= RequestMethod.GET)
     public ModelAndView removeCandidate(@RequestParam(name="id") Long id){
@@ -66,4 +65,14 @@ public class EmployerController {
         modelAndView.addObject("allEmployers", allEmployers);
         return modelAndView;
     }
+
+    //
+
+    @RequestMapping(value = "showListOfEmployers.html")
+    public ModelAndView findEmployer (@RequestParam(name="id") Long id) {
+        ModelAndView modelAndView = new ModelAndView("employerViews/displayEmployer");
+        employerService.findEmployerById(id);
+        return modelAndView;
+    }
+
 }

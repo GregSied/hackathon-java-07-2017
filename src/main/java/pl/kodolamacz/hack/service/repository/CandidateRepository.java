@@ -1,12 +1,11 @@
 package pl.kodolamacz.hack.service.repository;
 
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import pl.kodolamacz.hack.model.Candidate;
 
 import java.util.List;
-import pl.kodolamacz.hack.model.Employer;
+
 
 public interface CandidateRepository extends CrudRepository<Candidate, Long> {
 
@@ -17,4 +16,5 @@ public interface CandidateRepository extends CrudRepository<Candidate, Long> {
 
     List<Candidate> findByLastNamenContainig(String search);
 
+    //Sasha grey was here
 }
