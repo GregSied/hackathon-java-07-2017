@@ -10,19 +10,16 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "job")
-public class Job {
+public class Job extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @Column(name = "employerId")
     private Long employerId;
-    @Column(name = "job_title")
+    @Column(name = "title")
     @NotNull
-    private String jobTitle;
+    private String title;
     @NotNull
-    @Column(name = "job_description")
-    private String jobDescription;
+    @Column(name = "description")
+    private String description;
     @NotNull
     private String conditions;
     private String benefits;
@@ -34,38 +31,31 @@ public class Job {
     public Job() {
     }
 
-    public Job(Long employerId, String jobTitle, String jobDescription, String conditions, String benefits, int salaryLow, int salaryHigh) {
+    public Job(Long employerId, String title, String description, String conditions, String benefits, int salaryLow, int salaryHigh) {
         this.employerId = employerId;
-        this.jobTitle = jobTitle;
-        this.jobDescription = jobDescription;
+        this.title = title;
+        this.description = description;
         this.conditions = conditions;
         this.benefits = benefits;
         this.salaryLow = salaryLow;
         this.salaryHigh = salaryHigh;
     }
 
-    public Long getEmployerId() {
-        return employerId;
+
+    public String getTitle() {
+        return title;
     }
 
-    public void setEmployerId(Long employerId) {
-        this.employerId = employerId;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getJobTitle() {
-        return jobTitle;
+    public String getDescription() {
+        return description;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public String getJobDescription() {
-        return jobDescription;
-    }
-
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getConditions() {

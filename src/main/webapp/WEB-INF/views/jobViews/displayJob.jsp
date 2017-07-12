@@ -9,8 +9,8 @@
 <body>
 <h1>This is the data for job: ${foundJob.jobTitle}</h1>
 
-Title: ${foundJob.jobTitle}<br>
-Description: ${foundJob.jobDescription}<br>
+Title: ${foundJob.Title}<br>
+Description: ${foundJob.Description}<br>
 Conditions: ${foundJob.conditions}<br>
 Benefits: ${foundJob.benefits}<br>
 Salary: between ${foundJob.salaryLow} and ${foundJob.salaryHigh}
