@@ -59,7 +59,7 @@ public class JobController {
     @RequestMapping(value = "add-offer-form.html", method = RequestMethod.POST)
     public ModelAndView saveProduct(@Valid @ModelAttribute Job job, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("product");
+            return new ModelAndView("/jobViews/addJobForm");
         }
 
         jobService.addNewJob(job);
