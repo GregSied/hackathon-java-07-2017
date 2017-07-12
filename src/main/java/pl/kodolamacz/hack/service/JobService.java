@@ -9,8 +9,7 @@ import java.util.List;
 
 /**
  * Created by Lukasz on 12.07.2017.
- */
-@Service
+ */@Service
 public class JobService {
 
 
@@ -40,8 +39,14 @@ public class JobService {
         jobRepository.delete(id);
     }
 
-    public Iterable<Job> findAllJobs(){
+    public Iterable<Job> findAllJob(){
         return jobRepository.findAll();
     }
+
+    public List<Job> searchJob(String name) {
+        return jobRepository.findByName(name);
+
+    }
+
 
 }

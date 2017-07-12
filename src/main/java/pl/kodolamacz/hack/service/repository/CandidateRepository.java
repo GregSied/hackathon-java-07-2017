@@ -1,5 +1,6 @@
 package pl.kodolamacz.hack.service.repository;
 
+
 import org.springframework.data.repository.CrudRepository;
 import pl.kodolamacz.hack.model.Candidate;
 
@@ -13,6 +14,6 @@ public interface CandidateRepository extends CrudRepository<Candidate, Long> {
 
     List<Candidate> findByName(String name);
 
-    List<Candidate> findByNameContaining(String search);
+    List<Candidate> findByLastNamenContainig(String search);
 
 }

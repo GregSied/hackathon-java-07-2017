@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title><s:message code="indexEmployee.title"/></title>
@@ -29,6 +30,14 @@
     </style>
 </head>
 <body>
+
+<f:form method="post" modelAttribute="job">
+    <p>
+    Nazwa:<f:input path="name"/>
+    </p>
+     <button type="submit">Search</button>
+</f:form>
+
 <table id="t01">
 
     <tr>
