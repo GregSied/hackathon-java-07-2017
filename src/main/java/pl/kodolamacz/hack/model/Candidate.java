@@ -9,14 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "candidate")
-public class Candidate {
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long id;
-
+public class Candidate extends AbstractEntity {
 
 
     @Column(name = "first_name")
@@ -82,11 +75,5 @@ public class Candidate {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
