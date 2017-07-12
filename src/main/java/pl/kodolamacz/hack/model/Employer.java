@@ -12,6 +12,24 @@ public class Employer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    private String name;
+    @NotNull
+    private String email;
+    private String location;
+    @Column(name = "employees_count")
+    private int employeesCount;
+
+    public Employer() {
+    }
+
+    public Employer(String name, String email, String location, int employeesCount) {
+        this.name = name;
+        this.email = email;
+        this.location = location;
+        this.employeesCount = employeesCount;
+    }
+
     public String getName() {
         return name;
     }
@@ -44,13 +62,6 @@ public class Employer {
         this.employeesCount = employeesCount;
     }
 
-    @NotNull
-    private String name;
-    @NotNull
-    private String email;
-    private String location;
-    @Column(name = "employees_count")
-    private int employeesCount;
 
 
 }

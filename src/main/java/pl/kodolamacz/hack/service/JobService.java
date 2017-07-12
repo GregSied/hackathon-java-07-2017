@@ -1,6 +1,7 @@
 package pl.kodolamacz.hack.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pl.kodolamacz.hack.model.Job;
 import pl.kodolamacz.hack.service.repository.JobRepository;
 
@@ -8,18 +9,18 @@ import java.util.List;
 
 /**
  * Created by Lukasz on 12.07.2017.
- */
+ */@Service
 public class JobService {
 
 
     @Autowired
     JobRepository jobRepository;
 
-    public void addNewJob (Job job) {jobRepository.save(job);};
+    public void addNewJob (Job job) {jobRepository.save(job);}
     public void updateJob (Job job){jobRepository.save(job);
     }
 
-    public Job findJobById(Long id){
+    public Job findJobrById(Long id){
         return jobRepository.findById(id);
     }
 
@@ -28,7 +29,7 @@ public class JobService {
     }
 
     public List<Job> findJobsByNameLike(String nameSubstring){
-        return jobRepository.getByNameLike(nameSubstring);
+        return jobRepository.findByNameLike(nameSubstring);
     }
 
     public void deleteEmployerProfile(Job job){jobRepository.delete(job);
@@ -37,5 +38,15 @@ public class JobService {
     public void deleteJobProfileById(Long id){
         jobRepository.delete(id);
     }
+
+    public Iterable<Job> findAllJob(){
+        return jobRepository.findAll();
+    }
+
+    public List<Job> searchJob(String name) {
+        return jobRepository.findByName(name);
+
+    }
+
 
 }
