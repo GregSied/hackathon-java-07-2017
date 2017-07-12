@@ -2,6 +2,7 @@ package pl.kodolamacz.hack.service.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import pl.kodolamacz.hack.model.Employer;
+import pl.kodolamacz.hack.model.Job;
 
 
 import java.util.List;
@@ -15,8 +16,7 @@ public interface EmployerRepository extends CrudRepository<Employer, Long> {
 
     List<Employer> findByName(String name);
 
-    @Query("select e from employer where e.[name] like %?1%")
-    public List<Employer> getByNameLike(String search);
+    List<Employer> findByLocationContainig(String search);
 }
 
 
