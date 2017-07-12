@@ -11,6 +11,13 @@
     <title>$Title$</title>
 </head>
 <body>
-$END$
+<h2>Success!</h2>
+
+<p>
+    <a href="/index.html">
+        Main Menu
+    </a>
+</p>
+
 </body>
 </html>
