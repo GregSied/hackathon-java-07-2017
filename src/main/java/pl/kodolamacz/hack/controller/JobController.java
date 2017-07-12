@@ -3,7 +3,9 @@ package pl.kodolamacz.hack.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import pl.kodolamacz.hack.model.Job;
 import pl.kodolamacz.hack.service.JobService;
 
 /**
@@ -20,6 +22,14 @@ public class JobController {
     public ModelAndView getAllJob() {
         ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
         modelAndView.addObject("jobs", jobService.findAllJobs()); //TODO IMPLEMENT METHOD
+        return modelAndView;
+    }
+
+    @RequestMapping("displayJob.html")
+    public ModelAndView displayAJob(@RequestParam Long id){
+        ModelAndView modelAndView = new ModelAndView("jobViews/displayJob");
+        Job foundJob = jobService.findJobById(id);
+        modelAndView.addObject("foundJob", foundJob);
         return modelAndView;
     }
 }
