@@ -44,12 +44,6 @@ public class Job {
         this.salaryHigh = salaryHigh;
     }
 
-    private String benefits;
-    @Column(name = "salary_low")
-    private int salaryLow;
-    @Column(name = "salary_high")
-    private int salaryHigh;
-
     public Long getEmployerId() {
         return employerId;
     }
