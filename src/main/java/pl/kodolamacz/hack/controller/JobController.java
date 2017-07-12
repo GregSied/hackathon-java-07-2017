@@ -37,4 +37,12 @@ public class JobController {
 
         return modelAndView;
     }
+
+    @RequestMapping("displayJob.html")
+    public ModelAndView displayAJob(@RequestParam Long id){
+        ModelAndView modelAndView = new ModelAndView("jobViews/displayJob");
+        Job foundJob = jobService.findJobById(id);
+        modelAndView.addObject("foundJob", foundJob);
+        return modelAndView;
+    }
 }
