@@ -7,6 +7,11 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface JobRepository extends CrudRepository<Job, Long> {
 
+    Job findById(Long id);
 
+    List<Job> findByName(String name);
+
+    @Query("select j from job where j.[name] like %?1%")
+    public List<Job> getByNameLike(String search);
 
 }

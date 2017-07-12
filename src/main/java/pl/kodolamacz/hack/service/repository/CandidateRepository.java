@@ -4,4 +4,13 @@ import org.springframework.data.repository.CrudRepository;
 import pl.kodolamacz.hack.model.Employer;
 
 public interface CandidateRepository extends CrudRepository<Candidate, Long> {
+
+
+    Candidate findById(Long id);
+
+    List<Candidate> findByName(String name);
+
+    @Query("select c from candidate where c.[name] like %?1%")
+    public List<Candidate> getByNameLike(String search);
+
 }
