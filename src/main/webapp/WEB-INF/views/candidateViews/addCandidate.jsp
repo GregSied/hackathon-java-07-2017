@@ -8,30 +8,35 @@
 <h1>Add new candidate</h1>
 <f:form method="post" modelAttribute="candidate">
     <p>
-        Name:<f:input path="candidateName"/>
+        First Name:<f:input path="firstName"/>
     <p style="color:#ff0000;font-weight:bold">
-        <f:errors path="candidateName"/>
+        <f:errors path="firstName"/>
     </p>
     </p>
     <p>
-        Surname:<f:input path="candidateSurname"/>
+        Last Name:<f:input path="lastName"/>
     <p style="color:#ff0000;font-weight:bold">
-        <f:errors path="candidateSurname"/>
+        <f:errors path="lastName"/>
     </p>
     </p>
     <p>
-        Car:<f:input path="car"/>
+        Age:<f:input path="age"/>
     <p style="color:#ff0000;font-weight:bold">
-        <f:errors path="car"/>
+        <f:errors path="age"/>
     </p>
     </p>
     <p>
-        Phonenumber:<f:input path="phonenumber"/>
+        Hobbies:<f:input path="hobbies"/>
     <p style="color:#ff0000;font-weight:bold">
-        <f:errors path="phonenumber"/>
+        <f:errors path="hobbies"/>
     </p>
     </p>
-    <f:hidden path="id"/>
+    <p>
+        E-mail:<f:input path="email"/>
+    <p style="color:#ff0000;font-weight:bold">
+        <f:errors path="email"/>
+    </p>
+    </p>
     <button type="submit">Add</button>
 </f:form>
 </body>

@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kodolamacz.hack.model.Job;
 import pl.kodolamacz.hack.service.JobService;
-
-import javax.validation.Valid;
 
 /**
  * Created by Pingwinek on 2017-07-12.
@@ -24,17 +24,17 @@ public class JobController {
     @RequestMapping("show-jobs.html")
     public ModelAndView getAllJob() {
         ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
-        modelAndView.addObject("jobs", jobService.findAllJobs()); //TODO IMPLEMENT METHOD
+        modelAndView.addObject("jobs", jobService.findAllJob());
+        modelAndView.addObject("job", new Job());
         return modelAndView;
     }
+    //Search  JOBS
+    @RequestMapping("show-jobs.html")
+    public ModelAndView searchJob(@ModelAttribute Job job) {
+        ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
+        modelAndView.addObject("jobs", jobService.searchJob(job.getJobTitle()));
+        modelAndView.addObject("job", job);
 
-    @RequestMapping("add-jobs-form.html")
-    public ModelAndView saveProduct(@Valid @ModelAttribute Job job, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("addJobForm");
-        }
-
-        jobService.addNewJob(job);
-        return new ModelAndView("onJobSave", "job", job);
+        return modelAndView;
     }
 }
