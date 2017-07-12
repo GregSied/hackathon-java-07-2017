@@ -16,8 +16,12 @@ public class Candidate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
+
+
+
     @Column(name = "first_name")
     @NotNull
+
     private String firstName;
     @NotNull
     @Column(name = "last_name")
@@ -78,5 +82,11 @@ public class Candidate {
     public void setEmail(String email) {
         this.email = email;
     }
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

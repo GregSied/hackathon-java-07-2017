@@ -39,7 +39,7 @@ public class JobService {
         jobRepository.delete(id);
     }
 
-    public Iterable<Job> findAllJobs(){
+    public Iterable<Job> findAllJob(){
         return jobRepository.findAll();
     }
 
