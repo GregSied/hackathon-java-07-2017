@@ -42,6 +42,9 @@ public class JobService {
         return jobRepository.findJobsByEmployerId(employerId);
     }
 
+    public List<Job> findAllJob(){
+        return jobRepository.findAll();
+    }
 
 
 
