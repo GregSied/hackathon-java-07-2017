@@ -5,9 +5,12 @@ import pl.kodolamacz.hack.model.Job;
 
 import java.util.List;
 
+
 /**
  * Created by 8760w on 2017-07-12.
  */
+
+
 public interface JobRepository extends CrudRepository<Job, Long> {
 
     Job findById(Long id);
@@ -19,4 +22,5 @@ public interface JobRepository extends CrudRepository<Job, Long> {
     List<Job> getByNameLike(String nameSubstring);
 
     List<Job> findByNameLike(String nameSubstring);
+    Job deleteById(Long id);
 }
