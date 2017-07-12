@@ -29,13 +29,13 @@
 
 <li>
     <a href="registerEmployer.html">
-        Register as Employer
+        Zarejestruj się jako Pracodawca
     </a>
 </li>
 
 <li>
     <a href="registerCandidate.html">
-        Register as Candidate
+        Zarejestruj się jako Kandydat
     </a>
 </li>
 <br>
