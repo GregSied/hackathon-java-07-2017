@@ -38,8 +38,4 @@ public class CandidateService {
         candidateRepository.delete(id);
     }
 
-
-    public void addCandidate(Candidate candidate) {
-
-    }
 }
