@@ -9,13 +9,8 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "candidate")
-public class Candidate {
+public class Candidate extends Entity{
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long id;
     @Column(name = "first_name")
     @NotNull
     private String firstName;

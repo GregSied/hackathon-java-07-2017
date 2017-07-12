@@ -10,11 +10,8 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "job")
-public class Job {
+public class Job extends Entity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @Column(name = "employerId")
     private Long employerId;
     @Column(name = "job_title")
@@ -44,13 +41,6 @@ public class Job {
         this.salaryHigh = salaryHigh;
     }
 
-    public Long getEmployerId() {
-        return employerId;
-    }
-
-    public void setEmployerId(Long employerId) {
-        this.employerId = employerId;
-    }
 
     public String getJobTitle() {
         return jobTitle;

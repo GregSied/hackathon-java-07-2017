@@ -6,11 +6,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "employer")
-public class Employer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Employer extends Entity{
 
     @NotNull
     private String name;
