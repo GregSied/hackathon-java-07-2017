@@ -1,6 +1,7 @@
 package pl.kodolamacz.hack.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * 2017-07-12.
@@ -10,13 +11,19 @@ import javax.persistence.*;
 @Table(name = "candidate")
 public class Candidate {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String firstName;
-    String lastName;
-    int age;
-    String hobbies;
-    String candidateEmail;
+
+    private Long id;
+    @Column(name = "first_name")
+    @NotNull
+    private String firstName;
+    @NotNull
+    @Column(name = "last_name")
+    private String lastName;
+    @NotNull
+    private int age;
+    private String hobbies;
+    @NotNull
+    private String email;
 }

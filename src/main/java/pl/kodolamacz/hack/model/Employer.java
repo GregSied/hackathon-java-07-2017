@@ -1,11 +1,8 @@
 package pl.kodolamacz.hack.model;
 
 import javax.persistence.*;
-import java.sql.Blob;
+import javax.validation.constraints.NotNull;
 
-/**
- * Created by Jasiek on 12.07.2017.
- */
 
 @Entity
 @Table(name = "employer")
@@ -13,12 +10,14 @@ public class Employer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-
-    String employerName;
-    String employerEmail;
-    String location;
-    int employeesNumber;
+    private Long id;
+    @NotNull
+    private String name;
+    @NotNull
+    private String email;
+    private String location;
+    @Column(name = "employees_count")
+    private int employeesCount;
 
 
 }

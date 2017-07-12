@@ -1,6 +1,7 @@
 package pl.kodolamacz.hack.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * 2017-07-12.
@@ -13,15 +14,20 @@ public class Job {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    Long employer_id;
-    // TODO: 2017-07-12 sql column names
-    String jobTitle;
-    String jobDescription;
-    String skills;
-    String conditions;
-    String benefits;
-    int salary_low;
-    int salary_high;
+    private Long id;
+    private Long id_employer;
+    @Column(name = "job_title")
+    @NotNull
+    private String jobTitle;
+    @NotNull
+    @Column(name = "job_description")
+    private String jobDescription;
+    @NotNull
+    private String conditions;
+    private String benefits;
+    @Column(name = "salary_low")
+    private int salaryLow;
+    @Column(name = "salary_high")
+    private int salaryHigh;
 
 }
