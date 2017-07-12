@@ -2,9 +2,15 @@ package pl.kodolamacz.hack.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import pl.kodolamacz.hack.model.Job;
 import pl.kodolamacz.hack.service.JobService;
+
+import javax.validation.Valid;
 
 /**
  * Created by Pingwinek on 2017-07-12.
@@ -35,7 +41,7 @@ public class JobController {
     @RequestMapping (value ="edit-job.html", method = RequestMethod.GET)
     public ModelAndView showEditJob(@RequestParam(name="id")Long id){
         ModelAndView modelAndView = new ModelAndView("jobViews/editJob");
-        modelAndView.addObject(jobService.findJobrById(id));
+        modelAndView.addObject(jobService.findJobById(id));
         return modelAndView;
     }
 
