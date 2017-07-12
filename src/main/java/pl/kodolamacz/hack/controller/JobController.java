@@ -32,7 +32,7 @@ public class JobController {
     @RequestMapping("show-jobs.html")
     public ModelAndView searchJob(@ModelAttribute Job job) {
         ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
-        modelAndView.addObject("jobs", jobService.searchJob(job.getJobTitle()));
+        modelAndView.addObject("jobs", jobService.searchJob(job.getTitle()));
         modelAndView.addObject("job", job);
 
         return modelAndView;
