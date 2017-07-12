@@ -2,13 +2,8 @@ package pl.kodolamacz.hack.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import pl.kodolamacz.hack.model.Job;
 import pl.kodolamacz.hack.service.JobService;
 
 /**
@@ -25,7 +20,6 @@ public class JobController {
     public ModelAndView getAllJob() {
         ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
         modelAndView.addObject("jobs", jobService.findAllJob());
-        modelAndView.addObject("job", new Job());
         return modelAndView;
     }
 
@@ -35,5 +29,23 @@ public class JobController {
         Job foundJob = jobService.findJobById(id);
         modelAndView.addObject("foundJob", foundJob);
         return modelAndView;
+    }
+
+    //EDIT JOB GET METHOD
+    @RequestMapping (value ="edit-job.html", method = RequestMethod.GET)
+    public ModelAndView showEditJob(@RequestParam(name="id")Long id){
+        ModelAndView modelAndView = new ModelAndView("jobViews/editJob");
+        modelAndView.addObject(jobService.findJobrById(id));
+        return modelAndView;
+    }
+
+    //EDIT JOB POST METHOD
+    @RequestMapping (value="edit-job.html", method = RequestMethod.POST)
+    public ModelAndView editJob(@Valid Job job, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return new ModelAndView("/jobViews/editJob");
+        }
+        jobService.updateJob(job);
+        return new ModelAndView("jobViews/editJobConfirmation");
     }
 }

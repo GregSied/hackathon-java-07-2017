@@ -16,4 +16,5 @@ public interface CandidateRepository extends CrudRepository<Candidate, Long> {
 
     List<Candidate> findByLastNamenContainig(String search);
 
+    //Sasha grey was here
 }
