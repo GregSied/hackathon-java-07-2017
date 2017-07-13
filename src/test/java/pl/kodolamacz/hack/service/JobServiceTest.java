@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.model.Job;
+import pl.kodolamacz.hack.model.User;
 import pl.kodolamacz.hack.service.repository.EmployerRepository;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class JobServiceTest extends AbstractTransactionalJUnit4SpringContextTest
     public void shouldFindJobsByEmployerId() {
 
         //given
-        Employer employer = new Employer("aaa", "bbb", "ccc", 10);
+        Employer employer = new Employer("aaa", "bbb", "ccc", 10, new User("name", "password", User.Role.EMPLOYER));
         Long employerId = employerRepository.save(employer).getId();
         final Job job = new Job(employerId, "fsdgsd", "dgdhdffdsd", "conditions", "benefits", 100, 200);
         jobService.addNewJob(job);
