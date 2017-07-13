@@ -95,7 +95,7 @@ public class CandidateRepositoryTest extends AbstractTransactionalJUnit4SpringCo
     }
 
     @Test
-    public void should() throws Exception {
+    public void shouldCountCandidates() throws Exception {
         //given
         User user = User.admin("admin", "root123");
         userRepository.save(user);
