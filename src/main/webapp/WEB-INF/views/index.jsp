@@ -32,5 +32,6 @@
         Register as Candidate
     </a>
 </li>
+<img src="https://d2m2lkhawsaq1u.cloudfront.net/uploads/trial/sasha-grey-1-588_1399760242.jpg" style="width:400px;height:560px;"
 </body>
 </html>
