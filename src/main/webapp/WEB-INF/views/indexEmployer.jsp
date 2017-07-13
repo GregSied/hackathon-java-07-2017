@@ -39,7 +39,7 @@
 </li>
 
 <br>
-<a href="/">
+<a href="<c:url value="/"/>">
     <s:message code="index.mainMenu"/>
 </a>
 

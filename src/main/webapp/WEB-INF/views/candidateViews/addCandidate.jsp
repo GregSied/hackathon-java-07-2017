@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>Add candidate</title>
@@ -50,7 +52,7 @@
 </f:form>
 
 <p>
-    <a href="/index.html">
+    <a href="<c:url value="/"/>">
         Back to the main page
     </a>
 </p>

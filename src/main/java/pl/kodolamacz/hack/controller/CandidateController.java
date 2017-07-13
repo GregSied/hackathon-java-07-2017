@@ -67,7 +67,7 @@ public class CandidateController {
 
 
     //UPDATE CANDIDATE GET METHOD
-    @RequestMapping(value = "updateCandidate.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
     public ModelAndView showUpdateCandidate(@RequestParam long id){
         Map<String, Object> paramters = new HashMap<>();
         paramters.put("candidate", candidateService.findCandidateProfileId(id));

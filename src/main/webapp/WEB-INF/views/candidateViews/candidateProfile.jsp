@@ -35,7 +35,8 @@
     </tbody>
 </table>
 <p>
-    <a href="/candidate">Back to Candidate Menu</a>
+    <a href="<c:url value="/"/>">
+        Back to Candidate Menu</a>
 </p>
 
 </body>
