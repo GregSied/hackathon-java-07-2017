@@ -17,6 +17,10 @@ public class User extends AbstractEntity {
         this.role = role;
     }
 
+    public static User admin(String login, String password){
+        return new User(login,password, Role.ADMIN);
+    }
+
     public String getLogin() {
         return login;
     }

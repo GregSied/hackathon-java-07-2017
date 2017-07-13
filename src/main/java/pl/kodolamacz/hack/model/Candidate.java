@@ -1,6 +1,5 @@
 package pl.kodolamacz.hack.model;
 
-import com.sun.deploy.security.ValidationState;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
