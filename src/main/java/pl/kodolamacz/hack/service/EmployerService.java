@@ -39,6 +39,10 @@ public class EmployerService {
         return employerRepository.findById(id);
     }
 
+    public Employer findByUser(User user){
+        return employerRepository.findByUser(user);
+    }
+
     public List<Employer> findAllEmployers(){
         List<Employer> employerList = new ArrayList<>();
         employerRepository.findAll().forEach(employerList::add);

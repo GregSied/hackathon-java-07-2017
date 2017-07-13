@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.kodolamacz.hack.forms.RegisterEmployerForm;
 import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.model.User;
+import pl.kodolamacz.hack.security.SecurityContext;
 import pl.kodolamacz.hack.service.EmployerService;
 
 import javax.validation.Valid;
@@ -74,9 +75,11 @@ public class EmployerController {
     //
 
     @RequestMapping(value = "showEmployer.html")
-    public ModelAndView findEmployer (@RequestParam(name="id") Long id) {
+    public ModelAndView findEmployer () {
         ModelAndView modelAndView = new ModelAndView("employerViews/displayEmployer");
-        employerService.findEmployerById(id);
+
+        Employer employer = employerService.findByUser(SecurityContext.getCurrentlyLoggedUser());
+        modelAndView.addObject("employer", employer);
         return modelAndView;
     }
 
