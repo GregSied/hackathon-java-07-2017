@@ -56,8 +56,7 @@ public class CandidateService {
         candidateRepository.delete(id);
     }
 
-
-
+    public Candidate findByUser(User user){ return candidateRepository.findByUser(user);}
 
 
 }

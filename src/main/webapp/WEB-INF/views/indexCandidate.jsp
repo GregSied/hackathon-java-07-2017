@@ -12,22 +12,22 @@
 <h2><s:message code="index.chooseOption"/></h2>
 <br>
 <li>
-    <a href="candidateProfile.html">
+    <a href="<c:url value="/candidate/profile"/>">
         <s:message code="index.view"/>
     </a>
 </li>
 <li>
-    <a href="updateCandidate.html">
+    <a href="<c:url value="/candidate/update"/>">
         <s:message code="index.edit"/>
     </a>
 </li>
 <li>
-    <a href="showListOfEmployers.html">
+    <a href="<c:url value="/candidate/list"/>">
         <s:message code="index.viewEmployers"/>
     </a>
 </li>
 <li>
-    <a href="show-jobs.html">
+    <a href="<c:url value="/job/jobs"/>">
         <s:message code="index.viewJobs"/>
     </a>
 </li>

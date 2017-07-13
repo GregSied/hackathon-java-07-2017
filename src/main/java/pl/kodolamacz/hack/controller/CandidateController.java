@@ -24,6 +24,7 @@ import java.util.Map;
  * Created by Pingwinek on 2017-07-12.
  */
 @Controller
+@RequestMapping("/candidate")
 public class CandidateController {
 
     @Autowired
@@ -56,13 +57,14 @@ public class CandidateController {
 
 
     //SHOW PROFILE BY ID
-    @RequestMapping(value = "candidateProfile.html")
+    @RequestMapping(value = "/profile")
     public ModelAndView showClientProfile(){
         Long id = SecurityContext.getCurrentlyLoggedUser().getId();
         Candidate candidate = candidateService.findCandidateProfileId(id);
         return new ModelAndView(
                 "candidateViews/candidateProfile","candidate", candidate);
     }
+
 
     //UPDATE CANDIDATE GET METHOD
     @RequestMapping(value = "updateCandidate.html", method = RequestMethod.GET)
@@ -74,14 +76,14 @@ public class CandidateController {
     }
 
     //UPDATE CANDIDATE POST METHOD
-    @RequestMapping(value = "updateCandidate.html", method = RequestMethod.POST)
+    @RequestMapping(value = "/update.html", method = RequestMethod.POST)
     public ModelAndView editCandidate(@ModelAttribute Candidate candidate){
         candidate.setUser(SecurityContext.getCurrentlyLoggedUser());
         candidateService.updateCandidateProfile(candidate);
         return new  ModelAndView("candidateViews/editCandidateConfirmation");
     }
     //show list of employers
-    @RequestMapping(value = "showListOfCandidate.html")
+    @RequestMapping(value = "/list")
     public ModelAndView showListOfCandidate(){
         Iterable<Candidate> allCandidates = candidateService.findAllCandidate();
         List<Candidate> listOfCandidates = new ArrayList<>();
