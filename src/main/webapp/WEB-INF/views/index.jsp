@@ -11,7 +11,7 @@
 <h1>Choose your role:</h1>
 <br>
 <li>
-    <a href="/candidate">
+    <a href="<c:url value="/candidate"/>">
         Candidate
     </a>
 </li>
