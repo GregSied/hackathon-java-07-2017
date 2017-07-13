@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Job;
 import pl.kodolamacz.hack.service.JobService;
 
@@ -56,6 +57,15 @@ public class JobController {
         return new ModelAndView("jobViews/editJobConfirmation");
     }
 
+    //SAVE JOB OFFER GET METHOD
+    @RequestMapping(value = "add-offer-form.html", method = RequestMethod.GET)
+    public ModelAndView showAddCandidateForm() {
+
+        return new ModelAndView("/jobViews/addJobForm","candidate", new Candidate());
+
+    }
+
+    //SAVE JOB OFFER POST
     @RequestMapping(value = "add-offer-form.html", method = RequestMethod.POST)
     public ModelAndView saveProduct(@Valid @ModelAttribute Job job, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -63,6 +73,7 @@ public class JobController {
         }
 
         jobService.addNewJob(job);
-        return new ModelAndView("jobViews/addJobConfirmation");
+        return new ModelAndView("jobViews/addJobConfirmation", "job" , new Job());
     }
+
 }
