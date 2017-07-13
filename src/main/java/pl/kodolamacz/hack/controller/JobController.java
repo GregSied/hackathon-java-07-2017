@@ -59,9 +59,9 @@ public class JobController {
 
     //SAVE JOB OFFER GET METHOD
     @RequestMapping(value = "add-offer-form.html", method = RequestMethod.GET)
-    public ModelAndView showAddCandidateForm() {
+    public ModelAndView showAddJobForm() {
 
-        return new ModelAndView("/jobViews/addJobForm","candidate", new Job());
+        return new ModelAndView("/jobViews/addJobForm","job", new Job());
 
     }
 

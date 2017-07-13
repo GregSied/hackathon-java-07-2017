@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Service added!</title>
+    <title>Employer added!</title>
 </head>
 <body>
 <h2>Success!</h2>

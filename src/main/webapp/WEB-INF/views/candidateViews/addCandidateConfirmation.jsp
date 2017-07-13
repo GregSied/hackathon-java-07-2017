@@ -1,13 +1,23 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
-    <title>Add candidate result</title>
+    <title>Candidate added!</title>
 </head>
 <body>
+<h2>Success!</h2>
 <p>
-    New candidate has been added with given details name ${candidate.candidateName} and surname ${candidate.candidateSurname}
+    Hello ${candidate.firstName} ${candidate.lastName}!!<br>
+    You have been registered!
 </p>
-<a href="/">Go back to main menu</a>
+
+<p>
+    <a href="/index.html">
+        Back to the main page
+    </a>
+</p>
+
 </body>
 </html>

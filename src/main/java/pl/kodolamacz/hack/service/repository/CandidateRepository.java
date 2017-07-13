@@ -10,7 +10,6 @@ import java.util.List;
 public interface CandidateRepository extends CrudRepository<Candidate, Long> {
 
 
-    Candidate findById(Long id);
 
     List<Candidate> findByFirstName(String name);
 
