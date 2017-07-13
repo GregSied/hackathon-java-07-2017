@@ -1,63 +1,44 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Raynor
-  Date: 2017-07-12
-  Time: 11:36
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-    <title>Najlepsze oferty pracy</title>
+    <title><s:message code="index.title"/></title>
 </head>
 <body>
 
-<p>Zarejestruj się lub zaloguj na swoje konto:</p>
+<h1>Employer</h1>
+<h2>index.chooseOption</h2>
 <br>
-<li>
-    <a href="login-as-employee.html">
-        <s:message code="index.loginAsEmployee"/>
-    </a>
-</li>
-
-<li>
-    <a href="login-as-employer.html">
-        <s:message code="index.loginAsEmployer"/>
-    </a>
-</li>
-
 <li>
     <a href="registerEmployer.html">
-        Zarejestruj się jako Pracodawca
+        <s:message code="index.register"/>
+    </a>
+</li>
+<li>
+    <a href="showEmployer.html">
+        <s:message code="index.view"/>
+    </a>
+</li>
+<li>
+    <a href="editEmployer.html">
+        <s:message code="index.edit"/>
+    </a>
+</li>
+<li>
+    <a href="showListOfCandidate.html">
+        <s:message code="index.viewCandidates"/>
+    </a>
+</li>
+<li>
+    <a href="show-jobs.html">
+        <s:message code="index.viewJobs"/>
     </a>
 </li>
 
-<li>
-    <a href="registerCandidate.html">
-        Zarejestruj się jako Kandydat
-    </a>
-</li>
 <br>
-<p>Szukaj pracy lub pracowników:</p>
-<br>
-
-<li>
-    <a href="look-for-job-offers.html">
-        <s:message code="index.lookForJobOffers"/>
-    </a>
-</li>
-
-<li>
-    <a href="look-for-employees.html">
-        <s:message code="index.lookForEmployees"/>
-    </a>
-</li>
-
-
-
-
-
+<a href="/">
+    <s:message code="index.mainMenu"/>
+</a>
 
 </body>
 </html>
