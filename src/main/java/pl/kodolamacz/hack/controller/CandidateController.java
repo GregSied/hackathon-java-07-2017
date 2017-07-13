@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.kodolamacz.hack.forms.RegisterCandidateForm;
 import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Employer;
+import pl.kodolamacz.hack.security.SecurityContext;
 import pl.kodolamacz.hack.service.CandidateService;
 
 import javax.validation.Valid;
@@ -54,11 +55,13 @@ public class CandidateController {
     }
 
 
-    //SHOW PROFIL BY ID
+    //SHOW PROFILE BY ID
     @RequestMapping(value = "candidateProfile.html")
-    public ModelAndView showClientProfile(@RequestParam(name="id") Long id){
+    public ModelAndView showClientProfile(){
+        Long id = SecurityContext.getCurrentlyLoggedUser().getId();
+        Candidate candidate = candidateService.findCandidateProfileId(id);
         return new ModelAndView(
-                "/candidateView/candidateProfile","candidate", candidateService.findCandidateProfileId(id));
+                "candidateViews/candidateProfile","candidate", candidate);
     }
 
 
