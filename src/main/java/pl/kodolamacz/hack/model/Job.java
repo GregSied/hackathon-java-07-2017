@@ -1,5 +1,7 @@
 package pl.kodolamacz.hack.model;
 
+import org.springframework.context.support.AbstractApplicationContext;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -11,13 +13,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "job")
-public class Job {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "id_employer")
-
+public class Job extends AbstractEntity{
+    @Column(name = "employer_id")
     private Long employerId;
     @Column(name = "title")
     @NotNull

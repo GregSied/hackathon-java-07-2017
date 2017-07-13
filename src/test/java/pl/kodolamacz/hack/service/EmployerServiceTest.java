@@ -11,6 +11,8 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Employer;
+import pl.kodolamacz.hack.model.User;
+import pl.kodolamacz.hack.service.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,17 +23,22 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
 
     @Autowired
     private EmployerService employerService;
+    @Autowired
+    private UserRepository userRepository;
 
     @Before
     public void before(){
         jdbcTemplate.execute("truncate employer cascade");
-        employerService.addNewEmployerProfile(new Employer("Katarzyna Duczyk","kasia@op.pl","Poznan",12));
+        Employer employer = new Employer(
+                "Katarzyna Duczyk","kasia@op.pl","Poznan",12, new User("fjut","faja", User.Role.EMPLOYER));
+        employerService.addNewEmployerProfile(employer);
     }
 
     @Test
     public void shouldAddEmployer(){
         //given
-        Employer employer = new Employer("wata","wiktor@mik.pl","Warsaw",21);
+        Employer employer = new Employer("" +
+                "wata","wiktor@mik.pl","Warsaw",21, new User("jfkds","fds", User.Role.EMPLOYER));
         List<Employer> initiallyAllEmployers = employerService.findAllEmployers();
         int initialSize = initiallyAllEmployers.size();
         //when
@@ -44,7 +51,8 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
     @Test
     public void shouldUpdateEmployer(){
         //given
-        Employer employer = new Employer("wiktor","wiktor@mik.pl","Lodz",222);
+        Employer employer = new Employer(
+                "wiktor","wiktor@mik.pl","Lodz",222, new User("fds","dsf", User.Role.EMPLOYER));
         employerService.addNewEmployerProfile(employer);
         int initialSize = employerService.findAllEmployers().size();
         //when
@@ -60,7 +68,8 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
     @Test
     public void shouldFindEmployerById(){
         //given
-        Employer employer = new Employer("wiktor","wiktor@mik.pl","Lodz",222);
+        Employer employer = new Employer(
+                "wiktor","wiktor@mik.pl","Lodz",222, new User("fds","sdfs", User.Role.EMPLOYER));
         employerService.addNewEmployerProfile(employer);
         //when
         Employer foundEmployer = employerService.findEmployerById(employer.getId());
@@ -91,7 +100,8 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
 
     @Test
     public void shouldDeleteEmployer(){
-        Employer employer = new Employer("Wanisz","wanisz@sam.pl","Krakow",12);
+        Employer employer = new Employer(
+                "Wanisz","wanisz@sam.pl","Krakow",12, new User("dsa","ads", User.Role.EMPLOYER));
         employerService.addNewEmployerProfile(employer);
         int initialSizeOfDb = employerService.findAllEmployers().size();
         //when
@@ -104,7 +114,8 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
     @Test
     public void shouldDeleteEmployerById(){
         //given
-        Employer employer = new Employer("Wanisz","wanisz@sam.pl","Krakow",12);
+        Employer employer = new Employer(
+                "Wanisz","wanisz@sam.pl","Krakow",12, new User("sa","sa", User.Role.EMPLOYER));
         employerService.addNewEmployerProfile(employer);
         int initialSizeOfDb = employerService.findAllEmployers().size();
         Long id = employer.getId();

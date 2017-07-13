@@ -1,10 +1,12 @@
 package pl.kodolamacz.hack.model;
 
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import jdk.nashorn.internal.scripts.JO;
-
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -28,13 +30,27 @@ public class Candidate extends AbstractEntity {
     private String hobbies;
     @NotEmpty
     private String email;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
     @JoinTable(name = "job_candidate",
             joinColumns = {@JoinColumn(name = "job_id")},
             inverseJoinColumns = {@JoinColumn(name = "candidate_id")})
     private List<Job> jobs;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    @Cascade(CascadeType.ALL)
+    private User user;
+
     public Candidate() {
+    }
+
+    public Candidate(String firstName, String lastName, int age, String hobbies, String email, List<Job> jobs) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.hobbies = hobbies;
+        this.email = email;
+        this.jobs = jobs;
     }
 
     public Candidate(String firstName, String lastName, int age, String hobbies, String email) {
@@ -43,6 +59,15 @@ public class Candidate extends AbstractEntity {
         this.age = age;
         this.hobbies = hobbies;
         this.email = email;
+    }
+
+    public Candidate(String firstName, String lastName, int age, String hobbies, String email, User user) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.hobbies = hobbies;
+        this.email = email;
+        this.user = user;
     }
 
     public String getFirstName() {
@@ -91,5 +116,13 @@ public class Candidate extends AbstractEntity {
 
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -1,12 +1,18 @@
-DROP TABLE IF EXISTS job_candidate;
-DROP TABLE IF EXISTS job;
-DROP TABLE IF EXISTS employer;
-DROP TABLE IF EXISTS candidate_skill;
-DROP TABLE IF EXISTS candidate;
-DROP TABLE IF EXISTS skill;
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+
+CREATE TYPE role AS ENUM ('CANDIDATE', 'EMPLOYER', 'ADMIN');
+
+CREATE TABLE users (
+  id              BIGSERIAL NOT NULL PRIMARY KEY,
+  login           TEXT NOT NULL,
+  password        TEXT NOT NULL,
+  role            TEXT NOT NULL
+);
 
 CREATE TABLE employer(
   id              BIGSERIAL NOT NULL  PRIMARY KEY,
+  user_id         BIGINT NOT NULL REFERENCES users (id),
   name            TEXT NOT NULL,
   email           TEXT NOT NULL,
   location        TEXT NOT NULL,
@@ -15,6 +21,7 @@ CREATE TABLE employer(
 
 CREATE TABLE candidate(
   id              BIGSERIAL NOT NULL  PRIMARY KEY,
+  user_id         BIGINT NOT NULL REFERENCES users (id),
   first_name      TEXT NOT NULL,
   last_name       TEXT NOT NULL,
   email           TEXT NOT NULL,
@@ -24,7 +31,7 @@ CREATE TABLE candidate(
 
 CREATE TABLE job(
   id              BIGSERIAL NOT NULL  PRIMARY KEY,
-  employerId      BIGINT NOT NULL REFERENCES employer (id),
+  employer_id      BIGINT NOT NULL REFERENCES employer (id),
   title           TEXT NOT NULL,
   description     TEXT NOT NULL,
   conditions      TEXT NOT NULL,
@@ -44,9 +51,8 @@ CREATE TABLE candidate_skill(
   id_skill        BIGINT NOT NULL REFERENCES skill (id)
 );
 
-
 CREATE TABLE job_candidate (
-  id BIGSERIAL NOT NULL PRIMARY KEY ,
+  id BIGSERIAL NOT NULL PRIMARY KEY,
   job_id BIGINT REFERENCES job (id),
   candidate_id BIGINT REFERENCES candidate (id)
 );

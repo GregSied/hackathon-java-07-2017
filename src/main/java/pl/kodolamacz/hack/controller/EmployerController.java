@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import pl.kodolamacz.hack.forms.RegisterEmployerForm;
 import pl.kodolamacz.hack.model.Employer;
+import pl.kodolamacz.hack.model.User;
 import pl.kodolamacz.hack.service.EmployerService;
 
 import javax.validation.Valid;
@@ -21,16 +23,19 @@ public class EmployerController {
 
     @RequestMapping(value = "registerEmployer.html", method = RequestMethod.GET)
     public ModelAndView showAddEmployerForm() {
-        return new ModelAndView("employerViews/addEmployerForm", "employer", new Employer());
+
+        ModelAndView modelAndView = new ModelAndView("employerViews/addEmployerForm", "employerform", new RegisterEmployerForm());
+        return modelAndView;
     }
 
     @RequestMapping(value = "registerEmployer.html", method = RequestMethod.POST)
-    public ModelAndView addNewEmployer(@Valid Employer employer, BindingResult bindingResult){
+    public ModelAndView addNewEmployer(@Valid RegisterEmployerForm employerForm, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return new ModelAndView("employerViews/addEmployerForm");
         }
-        employerService.addNewEmployerProfile(employer);
+        employerService.addNewEmployerProfile(employerForm);
         ModelAndView modelAndView = new ModelAndView("employerViews/addEmployerConfirmation");
+        modelAndView.addObject("employerForm");
         return modelAndView;
     }
 

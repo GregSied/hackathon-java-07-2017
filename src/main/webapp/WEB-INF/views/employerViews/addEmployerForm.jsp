@@ -8,27 +8,45 @@
 </head>
 <body>
 <h1>Zarejestruj się jako pracodawca</h1>
-<f:form method="post" modelAttribute="employer">
-    <div class="form-label">Name of the company:</div>
-    <f:input path="name"/>
-    <f:errors path="name"/>
-
-    <div class="form-label">E-mail:</div>
-    <f:input path="email"/>
-    <f:errors path="email"/>
-
-    <div class="form-label">Adress:</div>
-    <f:input path="location"/>
-    <f:errors path="location"/>
-
-    <div class="form-label">Number of employees:</div>
-    <f:input type = "number" path="employeesCount"/>
-    <f:errors path="employeesCount"/>
 
 
+<f:form method="post" modelAttribute="employerform">
+
+<p>
+    Username:<br>
+    <f:input path="username"/>
+    <f:errors path="username"/>
+</p>
+    <p>
+    Password:<br>
+    <f:input path="password"/>
+    <f:errors path="password"/>
+    </p>
 
     <p>
-        <button type="submit">Add employee</button>
+    Name of the company:<br>
+    <f:input path="name"/>
+    <f:errors path="name"/>
+    </p>
+
+    <p>
+    E-mail:<br>
+    <f:input path="email"/>
+    <f:errors path="email"/>
+    </p>
+    <p>
+    Address:<br>
+    <f:input path="location"/>
+    <f:errors path="location"/>
+    </p>
+    <p>
+    Number of employees:<br>
+    <f:input type="number" path="numberOfEmployees"/>
+    <f:errors path="numberOfEmployees"/>
+    </p>
+
+    <p>
+        <button type="submit">Add employer</button>
     </p>
 </f:form>
 
