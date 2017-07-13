@@ -27,11 +27,8 @@ public class CandidateService {
     public Candidate findCandidateProfileId(Long id){
         return candidateRepository.findOne(id);}
 
-    public void addCandidateProfile(Candidate candidate){
-        candidateRepository.save(candidate);
-    }
 
-    public void updateCandidateProfile(Long id, Candidate candidate){
+    public void updateCandidateProfile(Candidate candidate){
         candidateRepository.save(candidate);
     }
     public void removeCandidateProfile(Long id){

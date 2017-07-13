@@ -20,16 +20,16 @@ import static org.junit.Assert.*;
  * Created by Pingwinek on 2017-07-12.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring.xml")
+@ContextConfiguration({"classpath:spring.xml", "classpath:repository.xml","classpath:mail.xml"})
 public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Autowired
     private CandidateService candidateService;
 
-    Candidate candidateTest = new Candidate("Mietek","Mietkowski",50,"Sasha Grey","kocham@sashe.com");
+    Candidate candidateTest = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
 
     @Test
-    public void should_add_candidate(){
+    public void should_add_candidate() {
         //given
         //when
         candidateService.addCandidate(candidateTest);
@@ -38,46 +38,65 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
         Assertions.assertThat(candidateById.getFirstName()).isEqualTo("Mietek");
 
     }
+
     @Test
-    public void should_list_all_candidate(){
+    public void should_list_all_candidate() {
         //given
+        candidateService.addCandidate(candidateTest);
         //when
-        Iterable<Candidate> iterableList=candidateService.findAllCandidate();
-        List<Candidate> candidateList= new ArrayList<>();
+        Iterable<Candidate> iterableList = candidateService.findAllCandidate();
+        List<Candidate> candidateList = new ArrayList<>();
         iterableList.forEach(candidateList::add);
-
-
         //then
         Assertions.assertThat(candidateList.size()).isGreaterThan(0);
 
     }
 
     @Test
-    public void should_list_candidate_by_id(){
+    public void should_find_candidate_by_id() {
         //given
-        //when
         candidateService.addCandidate(candidateTest);
-        Candidate candidateById = candidateService.findCandidateProfileId(1L);
+        //when
+        Candidate candidateById = candidateService.findCandidateProfileId(candidateTest.getId());
         //then
-        Assertions.assertThat(candidateById.getFirstName()).isNotNull();
+        Assertions.assertThat(candidateById.getFirstName()).contains("Mietek");
         Assertions.assertThat(candidateById.getFirstName()).isNotEmpty();
     }
 
     @Test
-    public void should_remove_candidate_by_id(){
+    public void should_remove_candidate_by_id() {
         //given
         candidateService.addCandidate(candidateTest);
         Candidate candidateById = candidateService.findCandidateProfileId(candidateTest.getId());
         //when
         candidateService.removeCandidateProfile(candidateById.getId());
-        Iterable<Candidate> iterableList=candidateService.findAllCandidate();
-        List<Candidate> candidateList= new ArrayList<>();
+        Iterable<Candidate> iterableList = candidateService.findAllCandidate();
+        List<Candidate> candidateList = new ArrayList<>();
         iterableList.forEach(candidateList::add);
         //then
         Assertions.assertThat(candidateList).doesNotContain(candidateById);
     }
 
-        //TODO UPDATE TEST
+    @Test
+    public void should_update_candidate(){
+        //given
+        candidateService.addCandidate(candidateTest);
+        candidateTest.setAge(100);
+        candidateTest.setFirstName("Karolina");
+        candidateTest.setHobbies("Filmy");
+        //when
+        candidateService.updateCandidateProfile(candidateTest);
+        Candidate candidateEditedById = candidateService.findCandidateProfileId(candidateTest.getId());
+        Iterable<Candidate> iterableList = candidateService.findAllCandidate();
+        List<Candidate> candidateList = new ArrayList<>();
+        iterableList.forEach(candidateList::add);
+        //then
+        Assertions.assertThat(candidateEditedById.getFirstName()).contains("Karolina");
+        Assertions.assertThat(candidateEditedById.getLastName()).contains("Mietkowski");
+        Assertions.assertThat(candidateEditedById.getAge()).isEqualTo(100);
+        Assertions.assertThat(candidateEditedById.getEmail()).contains("kocham@ad.com");
+        Assertions.assertThat(candidateList.size()).isEqualTo(1);
 
     }
 
+}

@@ -30,6 +30,8 @@
         <property name="jpaProperties">
             <value>
                 hibernate.dialect=org.hibernate.dialect.PostgreSQL94Dialect
+                hibernate.show_sql=true
+                hibernate.format_sql=true
             </value>
         </property>
     </bean>

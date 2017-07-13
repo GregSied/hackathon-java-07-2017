@@ -11,5 +11,6 @@
 
     <context:component-scan base-package="pl.kodolamacz.hack.service"/>
     <context:component-scan base-package="pl.kodolamacz.hack.controller"/>
-
+    <import resource="repository.xml"/>
+    <import resource="mail.xml"/>
 </beans>

@@ -54,6 +54,12 @@
     </a>
 </li>
 
+<li>
+    <a href="look-for-employees.html">
+        <s:message code="index.lookForEmployees"/>
+    </a>
+</li>
+
 
 
 
