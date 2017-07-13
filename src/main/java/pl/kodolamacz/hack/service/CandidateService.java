@@ -31,10 +31,8 @@ public class CandidateService {
         return candidateRepository.findByFirstName(name);}
 
     public List<Candidate> findCandidateProfileBySurname(String surname){
-        return candidateRepository.findByLastName(surname);}
-
-
-
+        return candidateRepository.findByLastName(surname);
+    }
 
     public void updateCandidateProfile(Candidate candidate){
         candidateRepository.save(candidate);
