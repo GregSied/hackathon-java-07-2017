@@ -56,3 +56,10 @@ CREATE TABLE job_candidate (
   job_id BIGINT REFERENCES job (id),
   candidate_id BIGINT REFERENCES candidate (id)
 );
+CREATE TABLE messages (
+  id BIGSERIAL NOT NULL PRIMARY KEY,
+  id_sender BIGINT,
+  id_reciver BIGINT,
+  text_message TEXT,
+  time_send_message TIMESTAMP
+);
