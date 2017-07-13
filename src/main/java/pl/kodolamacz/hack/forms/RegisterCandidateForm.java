@@ -6,7 +6,7 @@ public class RegisterCandidateForm {
     private String password;
 
     private String firstName;
-    private String LastName;
+    private String lastName;
     private String age;
     private String hobbies;
     private String email;
@@ -36,11 +36,11 @@ public class RegisterCandidateForm {
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     public String getAge() {
