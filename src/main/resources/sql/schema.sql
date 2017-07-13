@@ -4,10 +4,10 @@ CREATE SCHEMA public;
 CREATE TYPE role AS ENUM ('CANDIDATE', 'EMPLOYER', 'ADMIN');
 
 CREATE TABLE users (
-  id BIGSERIAL NOT NULL PRIMARY KEY,
-  login TEXT NOT NULL,
-  password TEXT NOT NULL,
-  role role NOT NULL
+  id              BIGSERIAL NOT NULL PRIMARY KEY,
+  login           TEXT NOT NULL,
+  password        TEXT NOT NULL,
+  role            role NOT NULL
 );
 
 CREATE TABLE employer(
