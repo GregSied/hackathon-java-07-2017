@@ -32,10 +32,5 @@
         Register as Candidate
     </a>
 </li>
-<li>
-    <a href="<c:url value="/message/users"/>">
-        Send message
-    </a>
-</li>
 </body>
 </html>
