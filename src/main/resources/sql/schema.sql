@@ -24,7 +24,7 @@ CREATE TABLE candidate(
 
 CREATE TABLE job(
   id              BIGSERIAL NOT NULL  PRIMARY KEY,
-  employerId      BIGINT NOT NULL REFERENCES employer (id),
+  employer_id      BIGINT NOT NULL REFERENCES employer (id),
   title           TEXT NOT NULL,
   description     TEXT NOT NULL,
   conditions      TEXT NOT NULL,

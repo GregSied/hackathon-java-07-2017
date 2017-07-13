@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.model.Job;
+import pl.kodolamacz.hack.service.repository.EmployerRepository;
 
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * 2017-07-13.
@@ -19,18 +19,28 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring.xml")
-public class JobServiceTest extends AbstractTransactionalJUnit4SpringContextTests{
+public class JobServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Autowired
     JobService jobService;
 
-    Job job=new Job(0L,"robota","niezła fucha","conditions", "benefits", 100,200);
+    @Autowired
+    EmployerRepository employerRepository;
 
     @Test
-    public void shouldFindJobsByEmployerId(){
+    public void shouldFindJobsByEmployerId() {
 
-    List<Job> jobByEmpId =jobService.findJobsByEmployerId(0L);
-        Assertions.assertThat(jobByEmpId).isNotEmpty();
+        //given
+        Employer employer = new Employer("aaa", "bbb", "ccc", 10);
+        Long employerId = employerRepository.save(employer).getId();
+        final Job job = new Job(employerId, "fsdgsd", "dgdhdffdsd", "conditions", "benefits", 100, 200);
+        jobService.addNewJob(job);
+
+        //when
+        List<Job> jobList = jobService.findJobsByEmployerId(employerId);
+
+        //then
+        Assertions.assertThat(jobList).isNotEmpty();
 
     }
 
