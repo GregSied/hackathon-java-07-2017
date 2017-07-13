@@ -31,7 +31,7 @@ public class CandidateService {
         candidateRepository.save(candidate);
     }
 
-    public void updateCandidateProfile(Long id, Candidate candidate){
+    public void updateCandidateProfile(Candidate candidate){
         candidateRepository.save(candidate);
     }
     public void removeCandidateProfile(Long id){

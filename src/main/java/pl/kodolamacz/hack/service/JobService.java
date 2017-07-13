@@ -7,9 +7,13 @@ import pl.kodolamacz.hack.service.repository.JobRepository;
 
 import java.util.List;
 
+
 /**
  * Created by Lukasz on 12.07.2017.
- */@Service
+ */
+
+
+@Service
 public class JobService {
 
 
@@ -35,7 +39,7 @@ public class JobService {
     public void deleteEmployerProfile(Job job){jobRepository.delete(job);
     }
 
-    public void deleteById(Long id) {
+    public void deleteJobById(Long id) {
         jobRepository.delete(id);
     }
 
