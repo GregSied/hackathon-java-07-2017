@@ -1,30 +1,36 @@
 package pl.kodolamacz.hack.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Job;
+import pl.kodolamacz.hack.model.User;
+import pl.kodolamacz.hack.security.SecurityContext;
+import pl.kodolamacz.hack.service.CandidateService;
 import pl.kodolamacz.hack.service.JobService;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 
 /**
  * Created by Pingwinek on 2017-07-12.
  */
 @Controller
+@RequestMapping("/job")
 public class JobController {
 
     @Autowired
     JobService jobService;
+    @Autowired
+    CandidateService candidateService;
 
     //SHOW ALL JOBS - SASHA GREY
-    @RequestMapping("show-jobs.html")
+    @RequestMapping("/jobs")
     public ModelAndView getAllJob() {
         ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
         modelAndView.addObject("jobs", jobService.findAllJob());
@@ -76,6 +82,17 @@ public class JobController {
         return new ModelAndView("jobViews/addJobConfirmation", "job" , job);
     }
 
+    @RequestMapping(value = "apply-for-job", method = RequestMethod.GET)
+    public ModelAndView applyForJob(@RequestParam Long id){
+        User user = SecurityContext.getCurrentlyLoggedUser();
+        Job job = jobService.findJobById(id);
+        Candidate candidate = candidateService.findByUser(user);
+        job.getCandidates().add(candidate);
+        jobService.updateJob(job);
+        return getAllJob();
+
+
+    }
 
 
 

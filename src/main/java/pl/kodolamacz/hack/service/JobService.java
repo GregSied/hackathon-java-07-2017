@@ -2,7 +2,9 @@ package pl.kodolamacz.hack.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Job;
+import pl.kodolamacz.hack.model.User;
 import pl.kodolamacz.hack.service.repository.JobRepository;
 
 import java.util.List;
@@ -55,6 +57,8 @@ public class JobService {
 
         return jobRepository.findJobsByEmployerId(id);
     }
+
+
 
 }
 

@@ -18,6 +18,6 @@
     Amount of employees in company: ${employer.employeesCount}<br>
 
 </p>
-<a href="/">Back to main menu</a>
+<a href="/candidate">Back to Candidate Menu</a>
 </body>
 </html>
