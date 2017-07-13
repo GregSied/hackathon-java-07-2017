@@ -22,7 +22,7 @@
         <tr>
             <td>${status.index + 1}</td>
             <td>${employer.id}</td>
-            <td>${employer.name}</td>
+            <td><a href="displayEmployerPage.html?id=${employer.id}">${employer.name}</a></td>
             <td>${employer.email}</td>
             <td>${employer.location}</td>
             <td>${employer.employeesCount}</td>
