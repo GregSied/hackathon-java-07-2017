@@ -9,7 +9,6 @@ public class User extends AbstractEntity {
     private String password;
     private Role role;
 
-
     public String getLogin() {
         return login;
     }
