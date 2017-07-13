@@ -43,16 +43,16 @@ public class EmployerController {
     @RequestMapping(value = "editEmployer.html", method = RequestMethod.GET)
     public ModelAndView showEditEmployer(@RequestParam Long id){
         return new ModelAndView(
-                "/employerView/editEmployer","employer", employerService.findByUser(SecurityContext.getCurrentlyLoggedUser()));
+                "/employerViews/editEmployer","employer", employerService.findByUser(SecurityContext.getCurrentlyLoggedUser()));
     }
 
     @RequestMapping(value = "editEmployer.html",method = RequestMethod.POST)
     public ModelAndView editEmployer(@Valid Employer employer, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return new ModelAndView("/employerView/editEmployer");
+            return new ModelAndView("/employerViews/editEmployer");
         }
         employerService.updateEmployerProfile(employer);
-        return new ModelAndView("/employerView/editEmployerConfirmation");
+        return new ModelAndView("/employerViews/editEmployerConfirmation");
     }
 
     //REMOVE Employer
