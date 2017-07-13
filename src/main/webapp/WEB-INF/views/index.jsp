@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-    <title>Welcome to hackathon</title>
+    <title><s:message code="index.title"/></title>
 </head>
 <body>
 
