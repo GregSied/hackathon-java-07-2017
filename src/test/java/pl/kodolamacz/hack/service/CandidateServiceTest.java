@@ -1,6 +1,7 @@
 package pl.kodolamacz.hack.service;
 
 import org.assertj.core.api.Assertions;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.kodolamacz.hack.model.Candidate;
+import pl.kodolamacz.hack.model.Employer;
 
 
 import java.util.ArrayList;
@@ -25,6 +27,11 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
     private CandidateService candidateService;
 
     Candidate candidateTest = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
+
+    @Before
+    public void before(){
+        jdbcTemplate.execute("truncate candidate cascade");
+    }
 
     @Test
     public void should_add_candidate() {
@@ -124,8 +131,6 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
         Assertions.assertThat(candidateEditedById.getLastName()).contains("Mietkowski");
         Assertions.assertThat(candidateEditedById.getAge()).isEqualTo(100);
         Assertions.assertThat(candidateEditedById.getEmail()).contains("kocham@ad.com");
-        Assertions.assertThat(candidateList.size()).isEqualTo(1);
-
     }
 
 }
