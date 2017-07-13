@@ -59,6 +59,7 @@
             <td>${job.salaryHigh}</td>
             <td><a href="edit-job.html?id=${job.id}">Edit</a></td>
             <td><a href="remove-job.html?id=${job.id}">Remove</a></td>
+            <td><a href="apply-for-job.html?id=${job.id}">Apply</a></td>
 
                 <%--<td>--%>
                 <%--<form action="edit-job.html?id=${job.id}">--%>
