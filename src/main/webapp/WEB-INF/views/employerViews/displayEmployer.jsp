@@ -12,10 +12,10 @@
 </head>
 <body>
 <p>
-    Name: ${employer.employerName}<br>
-    Email: ${employer.employerEmail}<br>
+    Name: ${employer.name}<br>
+    Email: ${employer.email}<br>
     Location: ${employer.location}<br>
-    Amount of employees in company: ${employer.employeesNumber}<br>
+    Amount of employees in company: ${employer.employeesCount}<br>
 
 </p>
 <a href="/">Back to main menu</a>

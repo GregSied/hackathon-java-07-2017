@@ -75,4 +75,12 @@ public class EmployerController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "displayEmployerPage.html", method = RequestMethod.GET)
+    public ModelAndView displayEmployerPage(@RequestParam(name="id") Long id){
+        ModelAndView modelAndView = new ModelAndView("employerViews/displayEmployer");
+        Employer employer = employerService.findEmployerById(id);
+        modelAndView.addObject(employer);
+        return modelAndView;
+    }
+
 }
