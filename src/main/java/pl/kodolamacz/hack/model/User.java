@@ -33,7 +33,7 @@ public class User extends AbstractEntity {
         return role;
     }
 
-    private enum Role {
+    public enum Role {
         CANDIDATE, EMPLOYER, ADMIN
     }
 }

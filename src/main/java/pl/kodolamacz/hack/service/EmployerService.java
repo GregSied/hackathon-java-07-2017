@@ -2,9 +2,12 @@ package pl.kodolamacz.hack.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.kodolamacz.hack.forms.RegisterEmployerForm;
 import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Employer;
+import pl.kodolamacz.hack.model.User;
 import pl.kodolamacz.hack.service.repository.EmployerRepository;
+import pl.kodolamacz.hack.service.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +18,18 @@ public class EmployerService {
     @Autowired
     EmployerRepository employerRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     public void addNewEmployerProfile(Employer employer){
+        employerRepository.save(employer);
+    }
+
+    public void addNewEmployerProfile(RegisterEmployerForm employerForm){
+        User user = new User(employerForm.getUsername(),employerForm.getPassword(), User.Role.EMPLOYER);
+        userRepository.save(user);
+        Employer employer = new Employer(employerForm.getName(),employerForm.getEmail(),employerForm.getLocation(),employerForm.getNumberOfEmployees());
+        employer.setUserId(user.getId());
         employerRepository.save(employer);
     }
 
