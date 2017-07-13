@@ -17,6 +17,7 @@ import pl.kodolamacz.hack.service.repository.JobRepository;
 import pl.kodolamacz.hack.service.repository.UserRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -96,6 +97,26 @@ public class JobRepositoryTest extends AbstractTransactionalJUnit4SpringContextT
         long count = jobRepository.count();
         //then
         Assertions.assertThat(count).isEqualTo(1);
+    }
+
+    @Test
+    public void shouldFindAllJobs() throws Exception {
+        //given
+        User user = User.admin("admin", "root123");
+        userRepository.save(user);
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
+        employerRepository.save(employer);
+        Job job = new Job(employer.getId(),"gardener", "watering", "flower", "nothing", 10, 20);
+        jobRepository.save(job);
+        //when
+        Iterable<Job> output = jobRepository.findAll();
+        List<Job> lists = new ArrayList<>(1);
+        for (Job j : output) {
+            lists.add(j);
+        }
+        //then
+        Assertions.assertThat(lists.size()).isEqualTo(1);
+
     }
 
 
