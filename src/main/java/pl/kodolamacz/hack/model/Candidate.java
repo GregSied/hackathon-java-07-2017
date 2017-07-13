@@ -3,8 +3,6 @@ package pl.kodolamacz.hack.model;
 import com.sun.deploy.security.ValidationState;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import jdk.nashorn.internal.scripts.JO;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -34,6 +32,10 @@ public class Candidate extends AbstractEntity {
             joinColumns = {@JoinColumn(name = "job_id")},
             inverseJoinColumns = {@JoinColumn(name = "candidate_id")})
     private List<Job> jobs;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Candidate() {
     }
@@ -92,5 +94,13 @@ public class Candidate extends AbstractEntity {
 
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
