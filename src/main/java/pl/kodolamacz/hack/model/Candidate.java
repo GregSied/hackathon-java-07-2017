@@ -1,5 +1,7 @@
 package pl.kodolamacz.hack.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import jdk.nashorn.internal.scripts.JO;
 
 import javax.persistence.*;
@@ -16,15 +18,15 @@ public class Candidate extends AbstractEntity {
 
 
     @Column(name = "first_name")
-    @NotNull
+    @NotEmpty
     private String firstName;
-    @NotNull
+    @NotEmpty
     @Column(name = "last_name")
     private String lastName;
     @NotNull
     private int age;
     private String hobbies;
-    @NotNull
+    @NotEmpty
     private String email;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "job_candidate",

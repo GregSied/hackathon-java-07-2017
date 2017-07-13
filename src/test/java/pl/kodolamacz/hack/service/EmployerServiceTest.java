@@ -89,5 +89,33 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
         Assertions.assertThat(foundEmployers.get(0).getName()).isEqualTo("Katarzyna Duczyk");
     }
 
+    @Test
+    public void shouldDeleteEmployer(){
+        Employer employer = new Employer("Wanisz","wanisz@sam.pl","Krakow",12);
+        employerService.addNewEmployerProfile(employer);
+        int initialSizeOfDb = employerService.findAllEmployers().size();
+        //when
+        employerService.deleteEmployerProfile(employer);
+        int finalSizeOfDb = employerService.findAllEmployers().size();
+        //then
+        Assertions.assertThat(finalSizeOfDb).isEqualTo(initialSizeOfDb-1);
+    }
+
+    @Test
+    public void shouldDeleteEmployerById(){
+        //given
+        Employer employer = new Employer("Wanisz","wanisz@sam.pl","Krakow",12);
+        employerService.addNewEmployerProfile(employer);
+        int initialSizeOfDb = employerService.findAllEmployers().size();
+        Long id = employer.getId();
+        //when
+        employerService.deleteEmployerProfileById(id);
+        int finalSizeOfDb = employerService.findAllEmployers().size();
+        //then
+        Assertions.assertThat(finalSizeOfDb).isEqualTo(initialSizeOfDb-1);
+
+
+    }
+
 
 }
