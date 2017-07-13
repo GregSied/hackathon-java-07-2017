@@ -45,8 +45,8 @@ public class CandidateRepositoryTest extends AbstractTransactionalJUnit4SpringCo
         Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
         employerRepository.save(employer);
 
-        Candidate candidate = new Candidate("Jan", "Kowalski", 25,"jazda na rowerze", "aksmxal@gmail.com");
-        candidate.setUser(user);
+        Candidate candidate = new Candidate("Jan", "Kowalski", 25,"jazda na rowerze", "aksmxal@gmail.com", user);
+        
         ArrayList<Job> jobs = new ArrayList<>();
         Job job = new Job(null, "Programmer", "testing", "test", "test", 150, 170);
         job.setEmployerId(employer.getId());
