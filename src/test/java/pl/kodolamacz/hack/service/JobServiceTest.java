@@ -12,6 +12,7 @@ import pl.kodolamacz.hack.model.Job;
 import pl.kodolamacz.hack.model.User;
 import pl.kodolamacz.hack.service.repository.EmployerRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,6 +28,7 @@ public class JobServiceTest extends AbstractTransactionalJUnit4SpringContextTest
 
     @Autowired
     EmployerRepository employerRepository;
+
 
     @Test
     public void shouldFindJobsByEmployerId() {
@@ -44,5 +46,25 @@ public class JobServiceTest extends AbstractTransactionalJUnit4SpringContextTest
         Assertions.assertThat(jobList).isNotEmpty();
 
     }
+
+    @Test
+    public void shouldDeleteJobById() {
+
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20,
+                new User("name", "password", User.Role.EMPLOYER));
+        employerRepository.save(employer);
+        Job jobTest = new Job(employer.getId(),"spatial", "architecture spatial data", "actual", "reset room", 4000, 5500);
+        jobService.addNewJob(jobTest);
+        Job jobById = jobService.findJobById(jobTest.getId());
+
+        //when
+        jobService.deleteJobById(jobById.getId());
+        Iterable<Job> iterableList = jobService.findAllJob();
+        List<Job> jobList = new ArrayList<>();
+        iterableList.forEach(jobList::add);
+
+        //then
+        Assertions.assertThat(jobList).doesNotContain(jobById);
+   }
 
 }
