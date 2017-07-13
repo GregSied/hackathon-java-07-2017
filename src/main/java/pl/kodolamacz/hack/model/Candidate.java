@@ -30,7 +30,7 @@ public class Candidate extends AbstractEntity {
     private String hobbies;
     @NotEmpty
     private String email;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
     @JoinTable(name = "job_candidate",
             joinColumns = {@JoinColumn(name = "job_id")},
             inverseJoinColumns = {@JoinColumn(name = "candidate_id")})
