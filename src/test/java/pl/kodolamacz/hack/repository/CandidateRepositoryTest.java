@@ -21,6 +21,7 @@ import pl.kodolamacz.hack.service.repository.EmployerRepository;
 import pl.kodolamacz.hack.service.repository.UserRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 8760w on 2017-07-12.
@@ -46,7 +47,7 @@ public class CandidateRepositoryTest extends AbstractTransactionalJUnit4SpringCo
         employerRepository.save(employer);
 
         Candidate candidate = new Candidate("Jan", "Kowalski", 25,"jazda na rowerze", "aksmxal@gmail.com", user);
-        
+
         ArrayList<Job> jobs = new ArrayList<>();
         Job job = new Job(null, "Programmer", "testing", "test", "test", 150, 170);
         job.setEmployerId(employer.getId());
@@ -58,6 +59,22 @@ public class CandidateRepositoryTest extends AbstractTransactionalJUnit4SpringCo
         //then
         Assertions.assertThat(job.getId()).isNotNull();
         Assertions.assertThat(candidate.getId()).isNotNull();
+    }
+
+    @Test
+    public void shouldCheckIfCandidateExist() throws Exception{
+        //given
+        User user = User.admin("admin", "root123");
+        userRepository.save(user);
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
+        employerRepository.save(employer);
+        Candidate candidate = new Candidate("Jan", "Kowalski", 25,"jazda na rowerze", "aksmxal@gmail.com", user);
+        candidateRepository.save(candidate);
+        //when
+
+        Boolean output = candidateRepository.exists(candidate.getId());
+        //then
+        Assertions.assertThat(output).isEqualTo(true);
     }
 
 }
