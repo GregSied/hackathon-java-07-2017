@@ -1,14 +1,15 @@
 package pl.kodolamacz.hack.forms;
 
-public class RegisterEmployerForm {
+public class RegisterCandidateForm {
 
     private String username;
     private String password;
 
-    private String name;
+    private String firstName;
+    private String LastName;
+    private String age;
+    private String hobbies;
     private String email;
-    private String location;
-    private int numberOfEmployees;
 
     public String getUsername() {
         return username;
@@ -26,12 +27,36 @@ public class RegisterEmployerForm {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(String hobbies) {
+        this.hobbies = hobbies;
     }
 
     public String getEmail() {
@@ -40,21 +65,5 @@ public class RegisterEmployerForm {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public int getNumberOfEmployees() {
-        return numberOfEmployees;
-    }
-
-    public void setNumberOfEmployees(int numberOfEmployees) {
-        this.numberOfEmployees = numberOfEmployees;
     }
 }

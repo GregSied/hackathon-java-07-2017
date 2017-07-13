@@ -7,7 +7,7 @@ CREATE TABLE users (
   id              BIGSERIAL NOT NULL PRIMARY KEY,
   login           TEXT NOT NULL,
   password        TEXT NOT NULL,
-  role            role NOT NULL
+  role            TEXT NOT NULL
 );
 
 CREATE TABLE employer(
