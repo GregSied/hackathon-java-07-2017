@@ -37,7 +37,7 @@
     </c:forEach>
     </tbody>
 </table>
-<a href="/">Back to main menu</a>
+<a href="/employer">Back to Employer Menu</a>
 
 </body>
 </html>

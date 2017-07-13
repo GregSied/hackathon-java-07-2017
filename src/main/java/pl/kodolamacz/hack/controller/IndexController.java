@@ -55,6 +55,12 @@ public class IndexController {
         return "accessDenied";
     }
 
+    @RequestMapping(value = "/Access_Denied2", method = RequestMethod.GET)
+    public String accessDeniedPage2(ModelMap model) {
+        model.addAttribute("user", getPrincipal());
+        return "accessDeniedAlreadyLoggedIn";
+    }
+
     private String getPrincipal() {
         String userName = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
