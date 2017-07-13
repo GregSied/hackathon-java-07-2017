@@ -35,6 +35,7 @@ public class EmployerController {
         }
         employerService.addNewEmployerProfile(employerForm);
         ModelAndView modelAndView = new ModelAndView("employerViews/addEmployerConfirmation");
+        modelAndView.addObject("employerForm");
         return modelAndView;
     }
 

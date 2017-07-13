@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import pl.kodolamacz.hack.forms.RegisterCandidateForm;
 import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.service.CandidateService;
@@ -37,16 +38,16 @@ public class CandidateController {
     @RequestMapping(value = "registerCandidate.html", method = RequestMethod.GET)
     public ModelAndView showAddCandidateForm() {
 
-        return new ModelAndView("candidateViews/addCandidate","candidate", new Candidate());
+        return new ModelAndView("candidateViews/addCandidate","candidateForm", new RegisterCandidateForm());
 
     }
     //ADD CANDIDATE POST METHOD
     @RequestMapping(value = "registerCandidate.html", method = RequestMethod.POST)
-    public ModelAndView addCandidate(@Valid Candidate candidate, BindingResult bindingResult) {
+    public ModelAndView addCandidate(@Valid RegisterCandidateForm candidateForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("candidateViews/addCandidate");
         }
-        candidateService.addCandidate(candidate);
+        candidateService.addCandidate(candidateForm);
         return new ModelAndView("candidateViews/addCandidateConfirmation");
     }
 

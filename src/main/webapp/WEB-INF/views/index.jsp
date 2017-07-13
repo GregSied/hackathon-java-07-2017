@@ -25,5 +25,11 @@
     </a>
 </li>
 
+<li>
+    <a href="/registerCandidate.html">
+        Register as Candidate
+    </a>
+</li>
+
 </body>
 </html>

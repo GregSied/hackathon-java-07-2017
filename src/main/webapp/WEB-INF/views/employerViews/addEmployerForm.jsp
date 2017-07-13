@@ -12,32 +12,38 @@
 
 <f:form method="post" modelAttribute="employerform">
 
-
-    Username
+<p>
+    Username:<br>
     <f:input path="username"/>
     <f:errors path="username"/>
-
-    Password:
+</p>
+    <p>
+    Password:<br>
     <f:input path="password"/>
     <f:errors path="password"/>
+    </p>
 
-
-    Name of the company:
+    <p>
+    Name of the company:<br>
     <f:input path="name"/>
     <f:errors path="name"/>
+    </p>
 
-    E-mail:
+    <p>
+    E-mail:<br>
     <f:input path="email"/>
     <f:errors path="email"/>
-
-    Address:
+    </p>
+    <p>
+    Address:<br>
     <f:input path="location"/>
     <f:errors path="location"/>
-
-    Number of employees:
+    </p>
+    <p>
+    Number of employees:<br>
     <f:input type="number" path="numberOfEmployees"/>
     <f:errors path="numberOfEmployees"/>
-
+    </p>
 
     <p>
         <button type="submit">Add employer</button>

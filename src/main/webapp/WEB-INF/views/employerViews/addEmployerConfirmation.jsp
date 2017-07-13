@@ -9,7 +9,7 @@
 <body>
 <h2>Success!</h2>
 <p>
-    Hello ${employer.name}!!<br>
+    Hello ${employerForm.name}!!<br>
     You have been registered!
 </p>
 

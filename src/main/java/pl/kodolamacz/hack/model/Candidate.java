@@ -44,6 +44,23 @@ public class Candidate extends AbstractEntity {
     public Candidate() {
     }
 
+    public Candidate(String firstName, String lastName, int age, String hobbies, String email, List<Job> jobs) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.hobbies = hobbies;
+        this.email = email;
+        this.jobs = jobs;
+    }
+
+    public Candidate(String firstName, String lastName, int age, String hobbies, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.hobbies = hobbies;
+        this.email = email;
+    }
+
     public Candidate(String firstName, String lastName, int age, String hobbies, String email, User user) {
         this.firstName = firstName;
         this.lastName = lastName;

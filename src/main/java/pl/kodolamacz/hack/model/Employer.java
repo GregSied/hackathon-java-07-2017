@@ -1,7 +1,7 @@
 package pl.kodolamacz.hack.model;
 
 import org.hibernate.annotations.*;
-import org.hibernate.annotations.CascadeType;
+import javax.persistence.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -24,9 +24,8 @@ public class Employer extends AbstractEntity {
     @NotNull
     private int employeesCount;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    @Cascade(CascadeType.ALL)
     private User user;
 
     public Employer() {
