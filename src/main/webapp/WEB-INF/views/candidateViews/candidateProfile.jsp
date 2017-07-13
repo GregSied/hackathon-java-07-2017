@@ -35,9 +35,7 @@
     </tbody>
 </table>
 <p>
-    <a href="index.html">
-        Main menu
-    </a>
+    <a href="/candidate">Back to Candidate Menu</a>
 </p>
 
 </body>
