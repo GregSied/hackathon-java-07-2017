@@ -50,5 +50,17 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
         Assertions.assertThat(employerService.findAllEmployers().size()).isEqualTo(initialSize);
     }
 
+    @Test
+    public void shouldFindEmployerById(){
+        //given
+        Employer employer = new Employer("wiktor","wiktor@mik.pl","Lodz",222);
+        employerService.addNewEmployerProfile(employer);
+        //when
+        Employer foundEmployer = employerService.findEmployerById(employer.getId());
+        //then
+        Assertions.assertThat(foundEmployer.getName()).isEqualTo(employer.getName());
+
+    }
+
 
 }
