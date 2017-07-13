@@ -7,7 +7,7 @@ public class RegisterCandidateForm {
 
     private String firstName;
     private String lastName;
-    private String age;
+    private int age;
     private String hobbies;
     private String email;
 
@@ -43,11 +43,11 @@ public class RegisterCandidateForm {
         this.lastName = lastName;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

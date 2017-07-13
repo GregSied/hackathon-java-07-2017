@@ -6,7 +6,21 @@
 </head>
 <body>
 <h1>Add new candidate</h1>
-<f:form method="post" modelAttribute="candidate">
+<f:form method="post" modelAttribute="candidateForm">
+
+    <p>
+        Username:<br>
+        <f:input path="username"/>
+        <f:errors path="username"/>
+    </p>
+
+    <p>
+        Password: <br>
+        <f:input path="password"/>
+        <f:errors path="password"/>
+    </p>
+
+
     <p>
         First Name:<br>
         <f:input path="firstName"/>
@@ -34,5 +48,11 @@
     </p>
     <button type="submit">Add</button>
 </f:form>
+
+<p>
+    <a href="/index.html">
+        Back to the main page
+    </a>
+</p>
 </body>
 </html>

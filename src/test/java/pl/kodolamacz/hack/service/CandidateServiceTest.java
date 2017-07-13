@@ -10,6 +10,8 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Employer;
+import pl.kodolamacz.hack.model.User;
+import pl.kodolamacz.hack.service.repository.UserRepository;
 
 
 import java.util.ArrayList;
@@ -25,12 +27,16 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
 
     @Autowired
     private CandidateService candidateService;
+    @Autowired
+    private UserRepository userRepository;
 
-    Candidate candidateTest = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
+    Candidate candidateTest = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com", new User("LaFaja","Papaja",User.Role.CANDIDATE));
+
 
     @Before
     public void before(){
         jdbcTemplate.execute("truncate candidate cascade");
+
     }
 
     @Test
@@ -71,8 +77,8 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
     @Test
     public void should_find_candidate_by_name(){
         //given
-        Candidate candidateTest1 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
-        Candidate candidateTest2 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
+        Candidate candidateTest1 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com", new User("LaFajaDeux","Papaja",User.Role.CANDIDATE));
+        Candidate candidateTest2 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com", new User("LaFajaTrois","Papaja",User.Role.CANDIDATE));
 
         candidateService.addCandidate(candidateTest);
         candidateService.addCandidate(candidateTest1);
@@ -86,8 +92,8 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
     @Test
     public void should_find_candidate_by_surname(){
         //given
-        Candidate candidateTest1 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
-        Candidate candidateTest2 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
+        Candidate candidateTest1 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com",new User("LaFajaDeux","Papaja",User.Role.CANDIDATE));
+        Candidate candidateTest2 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com",new User("LaFajaTrois","Papaja",User.Role.CANDIDATE));
 
         candidateService.addCandidate(candidateTest);
         candidateService.addCandidate(candidateTest1);
