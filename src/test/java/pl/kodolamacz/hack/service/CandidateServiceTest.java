@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -14,7 +13,6 @@ import pl.kodolamacz.hack.model.Candidate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 
 /**
  * Created by Pingwinek on 2017-07-12.
@@ -61,6 +59,37 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
         //then
         Assertions.assertThat(candidateById.getFirstName()).contains("Mietek");
         Assertions.assertThat(candidateById.getFirstName()).isNotEmpty();
+    }
+
+    @Test
+    public void should_find_candidate_by_name(){
+        //given
+        Candidate candidateTest1 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
+        Candidate candidateTest2 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
+
+        candidateService.addCandidate(candidateTest);
+        candidateService.addCandidate(candidateTest1);
+        candidateService.addCandidate(candidateTest2);
+        //when
+        List<Candidate> candidateList = candidateService.findCandidateProfileByName("Mietek");
+        //then
+        Assertions.assertThat(candidateList.size()).isEqualTo(3);
+    }
+
+    @Test
+    public void should_find_candidate_by_surname(){
+        //given
+        Candidate candidateTest1 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
+        Candidate candidateTest2 = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
+
+        candidateService.addCandidate(candidateTest);
+        candidateService.addCandidate(candidateTest1);
+        candidateService.addCandidate(candidateTest2);
+        //when
+        List<Candidate> candidateList = candidateService.findCandidateProfileBySurname("Mietkowski");
+        //then
+        Assertions.assertThat(candidateList.size()).isEqualTo(3);
+
     }
 
     @Test
