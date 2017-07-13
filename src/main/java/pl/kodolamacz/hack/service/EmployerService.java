@@ -2,9 +2,11 @@ package pl.kodolamacz.hack.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.service.repository.EmployerRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,8 +27,10 @@ public class EmployerService {
         return employerRepository.findById(id);
     }
 
-    public Iterable<Employer> findAllEmployers(){
-        return employerRepository.findAll();
+    public List<Employer> findAllEmployers(){
+        List<Employer> employerList = new ArrayList<>();
+        employerRepository.findAll().forEach(employerList::add);
+        return employerList;
     }
 
     public List<Employer> findEmployersByName(String name){

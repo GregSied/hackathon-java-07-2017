@@ -1,5 +1,7 @@
 package pl.kodolamacz.hack.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -8,12 +10,14 @@ import javax.validation.constraints.NotNull;
 @Table(name = "employer")
 public class Employer extends AbstractEntity {
 
-    @NotNull
+    @NotEmpty
     private String name;
-    @NotNull
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String location;
     @Column(name = "employees_count")
+    @NotNull
     private int employeesCount;
 
     public Employer() {
