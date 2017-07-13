@@ -53,6 +53,6 @@
     </c:forEach>
     </tbody>
 </table>
-<a href="/">Back to main menu</a>
+<a href="/candidate">Back to Candidate menu</a>
 </body>
 </html>
