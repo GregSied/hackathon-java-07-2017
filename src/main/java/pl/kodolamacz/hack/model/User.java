@@ -21,6 +21,11 @@ public class User extends AbstractEntity {
         return new User(login,password, Role.ADMIN);
     }
 
+    public User() {
+    }
+
+
+
     public String getLogin() {
         return login;
     }

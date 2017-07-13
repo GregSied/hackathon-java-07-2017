@@ -29,7 +29,7 @@ public class EmployerService {
         User user = new User(employerForm.getUsername(),employerForm.getPassword(), User.Role.EMPLOYER);
         userRepository.save(user);
         Employer employer = new Employer(employerForm.getName(),employerForm.getEmail(),employerForm.getLocation(),employerForm.getNumberOfEmployees());
-        employer.setUserId(user.getId());
+        employer.setUser(user);
         employerRepository.save(employer);
     }
 

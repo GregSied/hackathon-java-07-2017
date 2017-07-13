@@ -12,10 +12,12 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 ;
 import pl.kodolamacz.hack.model.Candidate;
+import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.model.Job;
 import pl.kodolamacz.hack.model.User;
 
 import pl.kodolamacz.hack.service.repository.CandidateRepository;
+import pl.kodolamacz.hack.service.repository.EmployerRepository;
 import pl.kodolamacz.hack.service.repository.UserRepository;
 
 import java.util.ArrayList;
@@ -32,20 +34,27 @@ public class CandidateRepositoryTest extends AbstractTransactionalJUnit4SpringCo
     private CandidateRepository candidateRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private EmployerRepository employerRepository;
 
     @Test
     public void shouldSaveCandidate() throws Exception {
         //given
         User user = User.admin("admin", "root123");
+        userRepository.save(user);
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
+        employerRepository.save(employer);
 
         Candidate candidate = new Candidate("Jan", "Kowalski", 25,"jazda na rowerze", "aksmxal@gmail.com");
+        candidate.setUser(user);
         ArrayList<Job> jobs = new ArrayList<>();
         Job job = new Job(null, "Programmer", "testing", "test", "test", 150, 170);
+        job.setEmployerId(employer.getId());
         jobs.add(job);
         candidate.setJobs(jobs);
+
         //when
         candidateRepository.save(candidate);
-        userRepository.save(user);
         //then
         Assertions.assertThat(job.getId()).isNotNull();
         Assertions.assertThat(candidate.getId()).isNotNull();
