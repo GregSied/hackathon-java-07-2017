@@ -17,6 +17,7 @@ import pl.kodolamacz.hack.service.EmployerService;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping(value = "/employer")
 public class EmployerController {
 
     @Autowired
@@ -40,13 +41,13 @@ public class EmployerController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "editEmployer.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView showEditEmployer(){
         return new ModelAndView(
                 "/employerViews/editEmployer","employer", employerService.findByUser(SecurityContext.getCurrentlyLoggedUser()));
     }
 
-    @RequestMapping(value = "editEmployer.html",method = RequestMethod.POST)
+    @RequestMapping(value = "/edit",method = RequestMethod.POST)
     public ModelAndView editEmployer(@Valid Employer employer, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return new ModelAndView("/employerViews/editEmployer");
@@ -64,7 +65,7 @@ public class EmployerController {
     }
 
     //show list of employers
-    @RequestMapping(value = "showListOfEmployers.html")
+    @RequestMapping(value = "/list")
     public ModelAndView showListOfEmployers(){
         Iterable<Employer> allEmployers = employerService.findAllEmployers();
         ModelAndView modelAndView = new ModelAndView("employerViews/listOfEmployers");
@@ -74,7 +75,7 @@ public class EmployerController {
 
     //
 
-    @RequestMapping(value = "showEmployer.html")
+    @RequestMapping(value = "/show")
     public ModelAndView findEmployer () {
         ModelAndView modelAndView = new ModelAndView("employerViews/displayEmployer");
 

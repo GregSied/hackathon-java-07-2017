@@ -12,14 +12,14 @@
 <h1>Edit employer</h1>
 <f:form method="post" modelAttribute="employer">
     <div>Name: </div>
-    <f:input path="employerName"/>
+    <f:input path="name"/>
     <p>
-        <f:errors path="employerName"/>
+        <f:errors path="name"/>
     </p>
     <div>Email: </div>
-    <f:input path="employerEmail"/>
+    <f:input path="email"/>
     <p>
-        <f:errors path="employerEmail"/>
+        <f:errors path="email"/>
     </p>
 
     <div>Location: </div>
@@ -29,9 +29,9 @@
     </p>
 
     <div>Amount of employees in company: </div>
-    <f:input path="employeesNumber"/>
+    <f:input path="employeesCount"/>
     <p>
-        <f:errors path="employeesNumber"/>
+        <f:errors path="employeesCount"/>
     </p>
 
 
