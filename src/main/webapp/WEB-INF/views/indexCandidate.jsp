@@ -12,11 +12,6 @@
 <h2><s:message code="index.chooseOption"/></h2>
 <br>
 <li>
-    <a href="registerCandidate.html">
-        <s:message code="index.register"/>
-    </a>
-</li>
-<li>
     <a href="candidateProfile.html">
         <s:message code="index.view"/>
     </a>
