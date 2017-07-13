@@ -49,5 +49,20 @@ public class JobRepositoryTest extends AbstractTransactionalJUnit4SpringContextT
 
     }
 
+    @Test
+    public void shouldCheckIfJobsExist() throws Exception{
+        //given
+        User user = User.admin("admin", "root123");
+        userRepository.save(user);
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
+        employerRepository.save(employer);
+        Job job = new Job(employer.getId(),"gardener", "watering", "flower", "nothing", 10, 20);
+        jobRepository.save(job);
+        //when
+        Boolean output = jobRepository.exists(job.getId());
+        //then
+        Assertions.assertThat(output).isEqualTo(true);
+    }
+
 
 }

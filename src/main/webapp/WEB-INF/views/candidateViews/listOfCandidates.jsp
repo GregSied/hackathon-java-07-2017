@@ -1,3 +1,5 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: admin
@@ -26,8 +28,8 @@
     <c:forEach items="${allCandidates}" var="candidate" varStatus="status">
         <tr>
             <td>${status.index + 1}</td>
-            <td>${candidate.name}</td>
-            <td>${candidate.LastName}</td>
+            <td>${candidate.firstName}</td>
+            <td>${candidate.lastName}</td>
             <td>${candidate.age}</td>
             <td>${candidate.hobbies}</td>
             <td>${candidate.email}</td>
