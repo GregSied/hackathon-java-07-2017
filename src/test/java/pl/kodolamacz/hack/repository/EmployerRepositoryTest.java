@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.model.Job;
 import pl.kodolamacz.hack.model.User;
@@ -42,6 +43,19 @@ public class EmployerRepositoryTest extends AbstractTransactionalJUnit4SpringCon
         //then
         Assertions.assertThat(employer.getId()).isNotNull();
 
+    }
+
+    @Test
+    public void shouldCheckIfEmployeeExist() throws Exception{
+        //given
+        User user = User.admin("admin", "root123");
+        userRepository.save(user);
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
+        employerRepository.save(employer);
+        //when
+        Boolean output = employerRepository.exists(employer.getId());
+        //then
+        Assertions.assertThat(output).isEqualTo(true);
     }
 
 }
