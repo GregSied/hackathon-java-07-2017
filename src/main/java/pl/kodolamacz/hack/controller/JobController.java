@@ -61,7 +61,7 @@ public class JobController {
     @RequestMapping(value = "add-offer-form.html", method = RequestMethod.GET)
     public ModelAndView showAddCandidateForm() {
 
-        return new ModelAndView("/jobViews/addJobForm","candidate", new Candidate());
+        return new ModelAndView("/jobViews/addJobForm","candidate", new Job());
 
     }
 
@@ -73,7 +73,7 @@ public class JobController {
         }
 
         jobService.addNewJob(job);
-        return new ModelAndView("jobViews/addJobConfirmation", "job" , new Job());
+        return new ModelAndView("jobViews/addJobConfirmation", "job" , job);
     }
 
 }
