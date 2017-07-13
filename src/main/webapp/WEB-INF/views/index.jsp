@@ -9,12 +9,12 @@
 <h1>Choose your role:</h1>
 <br>
 <li>
-    <a href="indexCandidate.html">
+    <a href="/candidate">
         Candidate
     </a>
 </li>
 <li>
-    <a href="indexEmployer.html">
+    <a href="/employer">
         Employer
     </a>
 </li>
