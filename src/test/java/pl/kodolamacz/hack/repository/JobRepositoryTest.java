@@ -42,10 +42,12 @@ public class JobRepositoryTest extends AbstractTransactionalJUnit4SpringContextT
         Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
         employerRepository.save(employer);
         Job job = new Job(employer.getId(),"gardener", "watering", "flower", "nothing", 10, 20);
+        job.setEmployerId(employer.getId());
         //when
         jobRepository.save(job);
         //then
         Assertions.assertThat(job.getId()).isNotNull();
+        Assertions.assertThat(employer.getId()).isNotNull();
 
     }
 
@@ -62,6 +64,23 @@ public class JobRepositoryTest extends AbstractTransactionalJUnit4SpringContextT
         Boolean output = jobRepository.exists(job.getId());
         //then
         Assertions.assertThat(output).isEqualTo(true);
+    }
+
+    @Test
+    public void shouldDeleteJob() throws Exception {
+        //given
+        User user = User.admin("admin", "root123");
+        userRepository.save(user);
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
+        employerRepository.save(employer);
+        Job job = new Job(employer.getId(),"gardener", "watering", "flower", "nothing", 10, 20);
+        jobRepository.save(job);
+        //when
+        long jobInputCounter = jobRepository.count();
+        jobRepository.delete(job);
+        long jobOutputCounter = jobRepository.count();
+        //then
+        Assertions.assertThat(jobInputCounter-jobOutputCounter).isEqualTo(1);
     }
 
 

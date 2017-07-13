@@ -88,6 +88,7 @@ public class JobController {
         Candidate candidate = candidateService.findByUser(user);
         job.getCandidates().add(candidate);
         jobService.updateJob(job);
+        return getAllJob();
 
 
     }
