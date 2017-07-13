@@ -21,6 +21,8 @@ import pl.kodolamacz.hack.service.repository.EmployerRepository;
 import pl.kodolamacz.hack.service.repository.UserRepository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -107,5 +109,25 @@ public class CandidateRepositoryTest extends AbstractTransactionalJUnit4SpringCo
         long count = candidateRepository.count();
         //then
         Assertions.assertThat(count).isEqualTo(1);
+    }
+
+    @Test
+    public void shouldFindAllCandidates() throws Exception {
+        //given
+        User user = User.admin("admin", "root123");
+        userRepository.save(user);
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
+        employerRepository.save(employer);
+        Candidate candidate = new Candidate("Jan", "Kowalski", 25,"jazda na rowerze", "aksmxal@gmail.com", user);
+        candidateRepository.save(candidate);
+        //when
+        Iterable<Candidate> output = candidateRepository.findAll();
+        List<Candidate> lists = new ArrayList<>(1);
+        for (Candidate c : output) {
+            lists.add(c);
+        }
+        //then
+        Assertions.assertThat(lists.size()).isEqualTo(1);
+
     }
 }
