@@ -14,7 +14,9 @@ import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.service.CandidateService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -79,8 +81,12 @@ public class CandidateController {
     @RequestMapping(value = "showListOfCandidate.html")
     public ModelAndView showListOfCandidate(){
         Iterable<Candidate> allCandidates = candidateService.findAllCandidate();
+        List<Candidate> listOfCandidates = new ArrayList<>();
+        for (Candidate allCandidate : allCandidates) {
+            listOfCandidates.add(allCandidate);
+        }
         ModelAndView modelAndView = new ModelAndView("candidateViews/listOfCandidates");
-        modelAndView.addObject("allCandidates", allCandidates);
+        modelAndView.addObject("allCandidates", listOfCandidates);
         return modelAndView;
     }
 }
