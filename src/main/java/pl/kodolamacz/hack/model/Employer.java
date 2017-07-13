@@ -1,8 +1,12 @@
 package pl.kodolamacz.hack.model;
 
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 
@@ -22,9 +26,18 @@ public class Employer extends AbstractEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id")
+    @Cascade(CascadeType.ALL)
     private User user;
 
     public Employer() {
+    }
+
+    public Employer(String name, String email, String location, int employeesCount, User user) {
+        this.name = name;
+        this.email = email;
+        this.location = location;
+        this.employeesCount = employeesCount;
+        this.user = user;
     }
 
     public Employer(String name, String email, String location, int employeesCount) {
