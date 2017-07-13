@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS job_candidate;
 DROP TABLE IF EXISTS job;
 DROP TABLE IF EXISTS employer;
 DROP TABLE IF EXISTS candidate_skill;
@@ -41,4 +42,11 @@ CREATE TABLE candidate_skill(
   id              BIGSERIAL NOT NULL  PRIMARY KEY,
   id_candidate    BIGINT NOT NULL REFERENCES candidate (id),
   id_skill        BIGINT NOT NULL REFERENCES skill (id)
+);
+
+
+CREATE TABLE job_candidate (
+  id BIGSERIAL NOT NULL PRIMARY KEY ,
+  job_id BIGINT REFERENCES job (id),
+  candidate_id BIGINT REFERENCES candidate (id)
 );
