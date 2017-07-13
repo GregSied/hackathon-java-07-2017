@@ -7,7 +7,7 @@
 <body>
 
 <h1>Employer</h1>
-<h2>index.chooseOption</h2>
+<h2><s:message code="index.chooseOption"/></h2>
 <br>
 <li>
     <a href="registerEmployer.html">
