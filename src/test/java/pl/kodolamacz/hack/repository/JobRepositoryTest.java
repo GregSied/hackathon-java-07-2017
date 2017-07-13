@@ -83,5 +83,20 @@ public class JobRepositoryTest extends AbstractTransactionalJUnit4SpringContextT
         Assertions.assertThat(jobInputCounter-jobOutputCounter).isEqualTo(1);
     }
 
+    @Test
+    public void shouldCountJobs() throws Exception {
+        //given
+        User user = User.admin("admin", "root123");
+        userRepository.save(user);
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
+        employerRepository.save(employer);
+        Job job = new Job(employer.getId(),"gardener", "watering", "flower", "nothing", 10, 20);
+        jobRepository.save(job);
+        //when
+        long count = jobRepository.count();
+        //then
+        Assertions.assertThat(count).isEqualTo(1);
+    }
+
 
 }
