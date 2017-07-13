@@ -51,7 +51,8 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
     @Test
     public void shouldUpdateEmployer(){
         //given
-        Employer employer = new Employer("wiktor","wiktor@mik.pl","Lodz",222);
+        Employer employer = new Employer(
+                "wiktor","wiktor@mik.pl","Lodz",222, new User("fds","dsf", User.Role.EMPLOYER));
         employerService.addNewEmployerProfile(employer);
         int initialSize = employerService.findAllEmployers().size();
         //when
@@ -67,7 +68,8 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
     @Test
     public void shouldFindEmployerById(){
         //given
-        Employer employer = new Employer("wiktor","wiktor@mik.pl","Lodz",222);
+        Employer employer = new Employer(
+                "wiktor","wiktor@mik.pl","Lodz",222, new User("fds","sdfs", User.Role.EMPLOYER));
         employerService.addNewEmployerProfile(employer);
         //when
         Employer foundEmployer = employerService.findEmployerById(employer.getId());
@@ -98,7 +100,8 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
 
     @Test
     public void shouldDeleteEmployer(){
-        Employer employer = new Employer("Wanisz","wanisz@sam.pl","Krakow",12);
+        Employer employer = new Employer(
+                "Wanisz","wanisz@sam.pl","Krakow",12, new User("dsa","ads", User.Role.EMPLOYER));
         employerService.addNewEmployerProfile(employer);
         int initialSizeOfDb = employerService.findAllEmployers().size();
         //when
@@ -111,7 +114,8 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
     @Test
     public void shouldDeleteEmployerById(){
         //given
-        Employer employer = new Employer("Wanisz","wanisz@sam.pl","Krakow",12);
+        Employer employer = new Employer(
+                "Wanisz","wanisz@sam.pl","Krakow",12, new User("sa","sa", User.Role.EMPLOYER));
         employerService.addNewEmployerProfile(employer);
         int initialSizeOfDb = employerService.findAllEmployers().size();
         Long id = employer.getId();
