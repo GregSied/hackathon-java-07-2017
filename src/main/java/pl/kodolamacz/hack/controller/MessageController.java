@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.service.CandidateService;
 import pl.kodolamacz.hack.service.EmployerService;
 
@@ -17,11 +18,12 @@ public class MessageController {
     CandidateService candidateService;
 @Autowired
     EmployerService employerService;
-     @RequestMapping("/users/")
+     @RequestMapping("/users")
      public ModelAndView users(){
          ModelAndView modelAndView = new ModelAndView("messagesViews/showUsersToMessages");
-         modelAndView.addObject("candidate",candidateService.findAllCandidate());
-         modelAndView.addObject("employer",employerService.findAllEmployers());
+         Iterable<Candidate> allCandidate = candidateService.findAllCandidate();
+         modelAndView.addObject("allCandidates", allCandidate);
+         modelAndView.addObject("allEmployers",employerService.findAllEmployers());
          return modelAndView;
      }
 

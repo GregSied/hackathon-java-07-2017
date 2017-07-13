@@ -25,8 +25,8 @@
 <c:forEach items="${allCandidates}" var="candidate" varStatus="status">
     <tr>
     <td>${status.index + 1}</td>
-    <td>${candidate.name}</td>
-    <td>${candidate.LastName}</td>
+    <td>${candidate.firstName}</td>
+    <td>${candidate.lastName}</td>
         <td><a href="<c:url value="/message/user/${candidate.id}"/>">SendMesssage</a></td>
     </tr>
 </c:forEach>
