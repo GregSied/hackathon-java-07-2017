@@ -22,12 +22,12 @@
     </a>
 </li>
 <li>
-    <a href="<c:url value="/showListOfEmployers.html"/>">
+    <a href="<c:url value="/candidate/list"/>">
         <s:message code="index.viewEmployers"/>
     </a>
 </li>
 <li>
-    <a href="<c:url value="/job/jobs"/>">
+    <a href="<c:url value="/job/list"/>">
         <s:message code="index.viewJobs"/>
     </a>
 </li>

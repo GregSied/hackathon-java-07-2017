@@ -1,10 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<<<<<<< HEAD
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-=======
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
->>>>>>> 153baa72dd109bd70abcae3271771778340e6eb3
 <html>
 <head>
     <title>Edit Candidate</title>

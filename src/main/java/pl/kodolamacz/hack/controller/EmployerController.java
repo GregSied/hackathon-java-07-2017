@@ -11,11 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.kodolamacz.hack.forms.RegisterEmployerForm;
 import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.model.User;
+import pl.kodolamacz.hack.security.SecurityContext;
 import pl.kodolamacz.hack.service.EmployerService;
 
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping(value = "/employer")
 public class EmployerController {
 
     @Autowired
@@ -39,19 +41,19 @@ public class EmployerController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "editEmployer.html", method = RequestMethod.GET)
-    public ModelAndView showEditEmployer(@RequestParam Long id){
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public ModelAndView showEditEmployer(){
         return new ModelAndView(
-                "/employerView/editEmployer","employer", employerService.findEmployerById(id));
+                "/employerViews/editEmployer","employer", employerService.findByUser(SecurityContext.getCurrentlyLoggedUser()));
     }
 
-    @RequestMapping(value = "editEmployer.html",method = RequestMethod.POST)
+    @RequestMapping(value = "/edit",method = RequestMethod.POST)
     public ModelAndView editEmployer(@Valid Employer employer, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return new ModelAndView("/employerView/editEmployer");
+            return new ModelAndView("/employerViews/editEmployer");
         }
         employerService.updateEmployerProfile(employer);
-        return new ModelAndView("/employerView/editEmployerConfirmation");
+        return new ModelAndView("/employerViews/editEmployerConfirmation");
     }
 
     //REMOVE Employer
@@ -63,7 +65,7 @@ public class EmployerController {
     }
 
     //show list of employers
-    @RequestMapping(value = "showListOfEmployers.html")
+    @RequestMapping(value = "/list")
     public ModelAndView showListOfEmployers(){
         Iterable<Employer> allEmployers = employerService.findAllEmployers();
         ModelAndView modelAndView = new ModelAndView("employerViews/listOfEmployers");
@@ -73,10 +75,12 @@ public class EmployerController {
 
     //
 
-    @RequestMapping(value = "showEmployer.html")
-    public ModelAndView findEmployer (@RequestParam(name="id") Long id) {
+    @RequestMapping(value = "/show")
+    public ModelAndView findEmployer () {
         ModelAndView modelAndView = new ModelAndView("employerViews/displayEmployer");
-        employerService.findEmployerById(id);
+
+        Employer employer = employerService.findByUser(SecurityContext.getCurrentlyLoggedUser());
+        modelAndView.addObject("employer", employer);
         return modelAndView;
     }
 

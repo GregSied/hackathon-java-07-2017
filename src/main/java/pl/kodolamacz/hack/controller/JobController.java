@@ -30,7 +30,7 @@ public class JobController {
     CandidateService candidateService;
 
     //SHOW ALL JOBS - SASHA GREY
-    @RequestMapping("/jobs")
+    @RequestMapping("/list")
     public ModelAndView getAllJob() {
         ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
         modelAndView.addObject("jobs", jobService.findAllJob());
