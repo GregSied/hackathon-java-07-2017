@@ -43,6 +43,8 @@
         <th>Conditions</th>
         <th>Salary Low</th>
         <th>Salary High</th>
+        <th>Edit</th>
+        <th>Remove</th>
     </tr>
     <tbody>
     <c:forEach items="${jobs}" var="job" varStatus="status">
