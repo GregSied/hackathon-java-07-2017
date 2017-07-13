@@ -1,5 +1,6 @@
 package pl.kodolamacz.hack.model;
 
+import com.sun.deploy.security.ValidationState;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import jdk.nashorn.internal.scripts.JO;
@@ -28,7 +29,7 @@ public class Candidate extends AbstractEntity {
     private String hobbies;
     @NotEmpty
     private String email;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "job_candidate",
             joinColumns = {@JoinColumn(name = "job_id")},
             inverseJoinColumns = {@JoinColumn(name = "candidate_id")})

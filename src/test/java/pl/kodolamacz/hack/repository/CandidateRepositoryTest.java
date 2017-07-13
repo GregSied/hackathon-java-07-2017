@@ -1,25 +1,48 @@
 package pl.kodolamacz.hack.repository;
 
 
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.kodolamacz.hack.model.Candidate;
+import pl.kodolamacz.hack.model.Job;
+import pl.kodolamacz.hack.model.User;
+import pl.kodolamacz.hack.service.repository.CandidateRepository;
+
+import java.util.ArrayList;
 
 /**
  * Created by 8760w on 2017-07-12.
  */
-@Ignore
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring.xml")
 public class CandidateRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests {
 
+    @Autowired
+    private CandidateRepository candidateRepository;
 
-    Candidate candidateTest = new Candidate("Mietek","Mietkowski",50,"Sasha Grey","kocham@sashe.com");
-
-
+    @Test
+    public void shouldSaveCandidate() throws Exception {
+        //given
+        User user = new User();
+        user.
+        Candidate candidate = new Candidate("Jan", "Kowalski", 25,"jazda na rowerze", "aksmxal@gmail.com");
+        ArrayList<Job> jobs = new ArrayList<>();
+        Job job = new Job(null, "Programmer", "testing", "test", "test", 150, 170);
+        jobs.add(job);
+        candidate.setJobs(jobs);
+        //when
+        candidateRepository.save(candidate);
+        //then
+        Assertions.assertThat(job.getId()).isNotNull();
+        Assertions.assertThat(candidate.getId()).isNotNull();
+    }
 
 }
