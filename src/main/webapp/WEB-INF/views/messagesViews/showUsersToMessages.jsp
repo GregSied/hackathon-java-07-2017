@@ -10,15 +10,39 @@
 <html>
 <head>
     <title>Messages</title>
+    <style>
+        table {
+            width:30%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+        table#t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+        table#t01 tr:nth-child(odd) {
+            background-color:#fff;
+        }
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <h1>ListOfCandidate</h1>
-<table>
+<table id="t01">
     <thead>
     <tr>
         <th>Lp.</th>
         <th>Name</th>
         <th>Last Name</th>
+        <th>Send Message</th>
     </tr>
     </thead>
 <tbody>
@@ -33,12 +57,13 @@
 </tbody>
 </table>
 <h1>ListOfEmployer</h1>
-<table>
+<table id="t01">
     <thead>
     <tr>
         <th>Lp.</th>
         <th>Id</th>
         <th>Name</th>
+        <th>Send Message</th>
     </tr>
     </thead>
 <tbody>
