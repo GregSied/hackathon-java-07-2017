@@ -67,12 +67,21 @@ public class CandidateController {
 
 
     //UPDATE CANDIDATE GET METHOD
+<<<<<<< HEAD
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public ModelAndView showUpdateCandidate(@RequestParam long id){
+        Map<String, Object> paramters = new HashMap<>();
+        paramters.put("candidate", candidateService.findCandidateProfileId(id));
+        return new ModelAndView("candidateViews/editCandidateForm", paramters);
+
+=======
     @RequestMapping(value = "updateCandidate.html", method = RequestMethod.GET)
     public ModelAndView showUpdateCandidate(){
         Map<String, Object> parameters = new HashMap<>();
         Long id = SecurityContext.getCurrentlyLoggedUser().getId();
         parameters.put("candidate", candidateService.findCandidateProfileId(id));
         return new ModelAndView("candidateViews/editCandidateForm", parameters);
+>>>>>>> 153baa72dd109bd70abcae3271771778340e6eb3
     }
 
     //UPDATE CANDIDATE POST METHOD

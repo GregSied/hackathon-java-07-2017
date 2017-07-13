@@ -16,19 +16,20 @@
     </a>
 </li>
 <li>
-    <a href="/employer">
+    <a href="<c:url value="/employer"/>">
         Employer
     </a>
 </li>
 
 <li>
+
     <a href="/registerEmployer.html">
         Register as Employer
     </a>
 </li>
 
 <li>
-    <a href="/registerCandidate.html">
+    <a href="<c:url value="/candidate/registerCandidate.html"/>">
         Register as Candidate
     </a>
 </li>
