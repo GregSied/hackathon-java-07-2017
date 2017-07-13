@@ -13,25 +13,6 @@
 </head>
 <body>
 
-<p>Zarejestruj się lub zaloguj na swoje konto:</p>
-<br>
-<li>
-    <a href="login-as-employee.html">
-        <s:message code="index.loginAsEmployee"/>
-    </a>
-</li>
-
-<li>
-    <a href="login-as-employer.html">
-        <s:message code="index.loginAsEmployer"/>
-    </a>
-</li>
-
-<li>
-    <a href="registerEmployer.html">
-        Zarejestruj się jako Pracodawca
-    </a>
-</li>
 
 <li>
     <a href="registerCandidate.html">

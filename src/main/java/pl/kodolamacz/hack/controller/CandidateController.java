@@ -22,6 +22,7 @@ import java.util.Map;
 @Controller
 public class CandidateController {
 
+    @Autowired
     private CandidateService candidateService;
 
     //REMOVE CANDIDATE
@@ -33,20 +34,20 @@ public class CandidateController {
     }
 
     //ADD CANDIDATE GET METHOD
-    @RequestMapping(value = "add-candidate.html", method = RequestMethod.GET)
+    @RequestMapping(value = "registerCandidate.html", method = RequestMethod.GET)
     public ModelAndView showAddCandidateForm() {
 
         return new ModelAndView("candidateViews/addCandidate","candidate", new Candidate());
 
     }
     //ADD CANDIDATE POST METHOD
-    @RequestMapping(value = "add-candidate.html", method = RequestMethod.POST)
-    public ModelAndView addCandidate(@Valid @ModelAttribute Candidate candidate, BindingResult bindingResult) {
+    @RequestMapping(value = "registerCandidate.html", method = RequestMethod.POST)
+    public ModelAndView addCandidate(@Valid Candidate candidate, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("candidateViews/addCandidate");
         }
         candidateService.addCandidate(candidate);
-        return new ModelAndView("candidateViews/addCandidateConfirmation", "candidate", candidate);
+        return new ModelAndView("candidateViews/addCandidateConfirmation");
     }
 
 
