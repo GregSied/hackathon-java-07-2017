@@ -19,6 +19,9 @@ public class Employer extends AbstractEntity {
     @Column(name = "employees_count")
     @NotNull
     private int employeesCount;
+    private Long userId;
+
+
 
     public Employer() {
     }
@@ -62,6 +65,12 @@ public class Employer extends AbstractEntity {
         this.employeesCount = employeesCount;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
 
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
 }

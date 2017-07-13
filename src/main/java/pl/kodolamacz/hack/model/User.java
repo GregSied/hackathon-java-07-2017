@@ -9,6 +9,12 @@ public class User extends AbstractEntity {
     private String password;
     private Role role;
 
+    public User(String login, String password, Role role) {
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -25,7 +31,7 @@ public class User extends AbstractEntity {
         return role;
     }
 
-    private enum Role {
+    public enum Role {
         CANDIDATE, EMPLOYER, ADMIN
     }
 }

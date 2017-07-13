@@ -19,5 +19,11 @@
     </a>
 </li>
 
+<li>
+    <a href="/registerEmployer.html">
+        Register as Employer
+    </a>
+</li>
+
 </body>
 </html>
