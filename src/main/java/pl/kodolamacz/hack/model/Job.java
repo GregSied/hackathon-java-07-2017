@@ -29,7 +29,7 @@ public class Job extends AbstractEntity{
     private int salaryLow;
     @Column(name = "salary_high")
     private int salaryHigh;
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "jobs")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "jobs", cascade = javax.persistence.CascadeType.ALL)
     private List<Candidate> candidates;
 
     public Job() {

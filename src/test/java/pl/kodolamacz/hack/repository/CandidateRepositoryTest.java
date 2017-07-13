@@ -85,8 +85,6 @@ public class CandidateRepositoryTest extends AbstractTransactionalJUnit4SpringCo
         Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
         employerRepository.save(employer);
         Candidate candidate = new Candidate("Jan", "Kowalski", 25,"jazda na rowerze", "aksmxal@gmail.com", user);
-        //List<Candidate> candidates = new ArrayList<>();
-        //candidates.add(candidate);
         candidateRepository.save(candidate);
         //when
         long candidateInputCounter = candidateRepository.count();
@@ -94,5 +92,20 @@ public class CandidateRepositoryTest extends AbstractTransactionalJUnit4SpringCo
         long candidateOutputCounter = candidateRepository.count();
         //then
         Assertions.assertThat(candidateInputCounter-candidateOutputCounter).isEqualTo(1);
+    }
+
+    @Test
+    public void shouldCountCandidates() throws Exception {
+        //given
+        User user = User.admin("admin", "root123");
+        userRepository.save(user);
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
+        employerRepository.save(employer);
+        Candidate candidate = new Candidate("Jan", "Kowalski", 25,"jazda na rowerze", "aksmxal@gmail.com", user);
+        candidateRepository.save(candidate);
+        //when
+        long count = candidateRepository.count();
+        //then
+        Assertions.assertThat(count).isEqualTo(1);
     }
 }

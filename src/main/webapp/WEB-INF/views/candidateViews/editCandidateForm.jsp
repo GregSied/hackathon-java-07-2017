@@ -1,13 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: admin
-  Date: 12.07.2017
-  Time: 14:20
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<<<<<<< HEAD
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+=======
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+>>>>>>> 153baa72dd109bd70abcae3271771778340e6eb3
 <html>
 <head>
     <title>Edit Candidate</title>
@@ -15,33 +12,33 @@
 <body>
 <h1>Edit employer</h1>
 <f:form method="post" modelAttribute="candidate">
-    <div>Name: </div>
+    <div>Name:</div>
     <f:input path="firstName"/>
     <p>
         <f:errors path="firstName"/>
     </p>
-    <div>Last Name: </div>
+    <div>Last Name:</div>
     <f:input path="lastName"/>
     <p>
         <f:errors path="lastName"/>
     </p>
 
-    <div>AGE: </div>
+    <div>Age:</div>
     <f:input path="age"/>
     <p>
         <f:errors path="age"/>
     </p>
 
-    <div>Hobbies </div>
+    <div>Hobbies:</div>
     <f:input path="hobbies"/>
     <p>
         <f:errors path="hobbies"/>
     </p>
 
-    <div>Email </div>
-    <f:input path="candidateEmail"/>
+    <div>Email:</div>
+    <f:input path="email"/>
     <p>
-        <f:errors path="candidateEmail"/>
+        <f:errors path="email"/>
     </p>
 
     <p>
