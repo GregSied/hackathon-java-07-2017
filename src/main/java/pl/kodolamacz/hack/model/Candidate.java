@@ -2,8 +2,11 @@ package pl.kodolamacz.hack.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import jdk.nashorn.internal.scripts.JO;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 2017-07-12.
@@ -25,6 +28,11 @@ public class Candidate extends AbstractEntity {
     private String hobbies;
     @NotEmpty
     private String email;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "job_candidate",
+            joinColumns = {@JoinColumn(name = "job_id")},
+            inverseJoinColumns = {@JoinColumn(name = "candidate_id")})
+    private List<Job> jobs;
 
     public Candidate() {
     }
@@ -77,6 +85,11 @@ public class Candidate extends AbstractEntity {
         this.email = email;
     }
 
+    public List<Job> getJobs() {
+        return jobs;
+    }
 
-
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
 }

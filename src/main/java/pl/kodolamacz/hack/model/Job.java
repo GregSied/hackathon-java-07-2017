@@ -2,6 +2,7 @@ package pl.kodolamacz.hack.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 2017-07-12.
@@ -31,6 +32,8 @@ public class Job {
     private int salaryLow;
     @Column(name = "salary_high")
     private int salaryHigh;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "jobs")
+    private List<Candidate> candidates;
 
     public Job() {
     }
@@ -101,4 +104,11 @@ public class Job {
         this.salaryHigh = salaryHigh;
     }
 
+    public List<Candidate> getCandidates() {
+        return candidates;
+    }
+
+    public void setCandidates(List<Candidate> candidates) {
+        this.candidates = candidates;
+    }
 }
