@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title><s:message code="index.title"/></title>
@@ -10,33 +12,33 @@
 <h2><s:message code="index.chooseOption"/></h2>
 <br>
 <li>
-    <a href="registerCandidate.html">
-        <s:message code="index.register"/>
-    </a>
-</li>
-<li>
-    <a href="candidateProfile.html">
+    <a href="<c:url value="/candidate/profile"/>">
         <s:message code="index.view"/>
     </a>
 </li>
 <li>
-    <a href="updateCandidate.html">
+    <a href="<c:url value="/candidate/update"/>">
         <s:message code="index.edit"/>
     </a>
 </li>
 <li>
-    <a href="showListOfEmployers.html">
+    <a href="<c:url value="/showListOfEmployers.html"/>">
         <s:message code="index.viewEmployers"/>
     </a>
 </li>
 <li>
-    <a href="show-jobs.html">
+    <a href="<c:url value="/job/jobs"/>">
         <s:message code="index.viewJobs"/>
+    </a>
+</li>
+<li>
+    <a href="<c:url value="/message/users"/>">
+        <s:message code="candidate.sendMessage"/>
     </a>
 </li>
 
 <br>
-    <a href="/">
+<a href="<c:url value="/"/>">
         <s:message code="index.mainMenu"/>
     </a>
 

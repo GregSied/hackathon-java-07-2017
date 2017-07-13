@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.kodolamacz.hack.forms.RegisterCandidateForm;
 import pl.kodolamacz.hack.model.Candidate;
 import pl.kodolamacz.hack.model.Employer;
+import pl.kodolamacz.hack.security.SecurityContext;
 import pl.kodolamacz.hack.service.CandidateService;
 
 import javax.validation.Valid;
@@ -23,6 +24,7 @@ import java.util.Map;
  * Created by Pingwinek on 2017-07-12.
  */
 @Controller
+@RequestMapping("/candidate")
 public class CandidateController {
 
     @Autowired
@@ -54,31 +56,40 @@ public class CandidateController {
     }
 
 
-    //SHOW PROFIL BY ID
-    @RequestMapping(value = "candidateProfile.html")
-    public ModelAndView showClientProfile(@RequestParam(name="id") Long id){
+    //SHOW PROFILE BY ID
+    @RequestMapping(value = "/profile")
+    public ModelAndView showClientProfile(){
+        Long id = SecurityContext.getCurrentlyLoggedUser().getId();
+        Candidate candidate = candidateService.findCandidateProfileId(id);
         return new ModelAndView(
-                "/candidateView/candidateProfile","candidate", candidateService.findCandidateProfileId(id));
+                "candidateViews/candidateProfile","candidate", candidate);
     }
 
-
     //UPDATE CANDIDATE GET METHOD
-    @RequestMapping(value = "updateCandidate.html", method = RequestMethod.GET)
-    public ModelAndView showUpdateCandidate(@RequestParam long id){
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public ModelAndView showUpdateCandidate(@RequestParam long id) {
         Map<String, Object> paramters = new HashMap<>();
         paramters.put("candidate", candidateService.findCandidateProfileId(id));
         return new ModelAndView("candidateViews/editCandidateForm", paramters);
+    }
 
+    @RequestMapping(value = "updateCandidate.html", method = RequestMethod.GET)
+    public ModelAndView showUpdateCandidate(){
+        Map<String, Object> parameters = new HashMap<>();
+        Long id = SecurityContext.getCurrentlyLoggedUser().getId();
+        parameters.put("candidate", candidateService.findCandidateProfileId(id));
+        return new ModelAndView("candidateViews/editCandidateForm", parameters);
     }
 
     //UPDATE CANDIDATE POST METHOD
-    @RequestMapping(value = "updateCandidate.html", method = RequestMethod.POST)
-    public ModelAndView editCandidate(@Valid Candidate candidate){
+    @RequestMapping(value = "/update.html", method = RequestMethod.POST)
+    public ModelAndView editCandidate(@ModelAttribute Candidate candidate){
+        candidate.setUser(SecurityContext.getCurrentlyLoggedUser());
         candidateService.updateCandidateProfile(candidate);
         return new  ModelAndView("candidateViews/editCandidateConfirmation");
     }
     //show list of employers
-    @RequestMapping(value = "showListOfCandidate.html")
+    @RequestMapping(value = "/list")
     public ModelAndView showListOfCandidate(){
         Iterable<Candidate> allCandidates = candidateService.findAllCandidate();
         List<Candidate> listOfCandidates = new ArrayList<>();

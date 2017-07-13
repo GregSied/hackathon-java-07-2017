@@ -15,13 +15,7 @@ Conditions: ${foundJob.conditions}<br>
 Benefits: ${foundJob.benefits}<br>
 Salary: between ${foundJob.salaryLow} and ${foundJob.salaryHigh}
 
-<f:form method="post" action="applyForJob">
 
-<p>
-    <button type="submit">Apply!</button>
-</p>
-
-</f:form>
 
 
 <p>

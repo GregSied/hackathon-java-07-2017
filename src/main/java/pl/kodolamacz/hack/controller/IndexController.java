@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import pl.kodolamacz.hack.security.SecurityContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,13 +20,13 @@ public class IndexController {
     @RequestMapping({"candidate","indexCandidate.html"})
     public ModelAndView getIndexCandidate(){
         ModelAndView modelAndView = new ModelAndView("indexCandidate");
-        modelAndView.addObject("user", getPrincipal());
+        modelAndView.addObject("user", SecurityContext.getCurrentlyLoggedUser());
         return modelAndView;
     }
     @RequestMapping({"employer","indexEmployer.html"})
     public ModelAndView getIndexEmployer(){
         ModelAndView modelAndView = new ModelAndView("indexEmployer");
-        modelAndView.addObject("user", getPrincipal());
+        modelAndView.addObject("user", SecurityContext.getCurrentlyLoggedUser());
         return modelAndView;
     }
 
@@ -36,7 +37,7 @@ public class IndexController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
+        model.addAttribute("user", SecurityContext.getCurrentlyLoggedUser());
         return "admin";
     }
 
@@ -51,19 +52,14 @@ public class IndexController {
 
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
     public String accessDeniedPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
+        model.addAttribute("user", SecurityContext.getCurrentlyLoggedUser());
         return "accessDenied";
     }
 
-    private String getPrincipal() {
-        String userName = null;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if (principal instanceof UserDetails) {
-            userName = ((UserDetails) principal).getUsername();
-        } else {
-            userName = principal.toString();
-        }
-        return userName;
+    @RequestMapping(value = "/Access_Denied2", method = RequestMethod.GET)
+    public String accessDeniedPage2(ModelMap model) {
+        model.addAttribute("user", SecurityContext.getCurrentlyLoggedUser());
+        return "accessDeniedAlreadyLoggedIn";
     }
+
 }

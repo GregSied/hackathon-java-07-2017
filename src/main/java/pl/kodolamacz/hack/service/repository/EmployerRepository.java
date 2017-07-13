@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import pl.kodolamacz.hack.model.Employer;
 import pl.kodolamacz.hack.model.Job;
+import pl.kodolamacz.hack.model.User;
 
 
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.List;
  * Created by Jasiek on 12.07.2017.
  */
 public interface EmployerRepository extends CrudRepository<Employer, Long> {
+
+    Employer findByUser(User user);
 
     Employer findById(Long id);
 

@@ -13,7 +13,8 @@
     <a href="/">Go back to main menu</a>
 </li>
 <li>
-    <a href="/show-candidate.html">Go back to customers list</a>
+    <a href="/show-candidate.html">
+        Go back to customers list</a>
 </li>
 </body>
 </html>

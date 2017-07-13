@@ -31,12 +31,6 @@
 </head>
 <body>
 
-<f:form method="post" modelAttribute="job">
-    <p>
-    Nazwa:<f:input path="name"/>
-    </p>
-     <button type="submit">Search</button>
-</f:form>
 
 <table id="t01">
 
@@ -47,18 +41,25 @@
         <th>Job Title</th>
         <th>Job Description</th>
         <th>Conditions</th>
+        <th>Salary Low</th>
+        <th>Salary High</th>
+        <th>Edit</th>
+        <th>Remove</th>
     </tr>
     <tbody>
     <c:forEach items="${jobs}" var="job" varStatus="status">
         <tr>
             <td>${status.index + 1}</td>
             <td>${job.id}</td>
-            <td>${job.employeerId}</td>
-            <td>${job.Title}</td>
-            <td>${job.Description}</td>
-            <td>${job.Conditions}</td>
+            <td>${job.employerId}</td>
+            <td>${job.title}</td>
+            <td>${job.description}</td>
+            <td>${job.conditions}</td>
+            <td>${job.salaryLow}</td>
+            <td>${job.salaryHigh}</td>
             <td><a href="edit-job.html?id=${job.id}">Edit</a></td>
             <td><a href="remove-job.html?id=${job.id}">Remove</a></td>
+            <td><a href="apply-for-job.html?id=${job.id}">Apply</a></td>
 
                 <%--<td>--%>
                 <%--<form action="edit-job.html?id=${job.id}">--%>

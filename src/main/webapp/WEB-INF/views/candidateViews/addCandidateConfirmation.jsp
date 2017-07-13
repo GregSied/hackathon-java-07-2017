@@ -14,7 +14,7 @@
 </p>
 
 <p>
-    <a href="/index.html">
+    <a href="<c:url value="/"/>">
         Back to the main page
     </a>
 </p>
