@@ -22,5 +22,6 @@ public interface JobRepository extends CrudRepository<Job, Long> {
     List<Job> getByTitleLike(String titleSubstring);
 
     List<Job> findByTitleLike(String titleSubstring);
-    Job deleteById(Long id);
+
+    Job deleteJobById(Long id);
 }

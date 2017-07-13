@@ -26,7 +26,7 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
     @Autowired
     private CandidateService candidateService;
 
-    Candidate candidateTest = new Candidate("Mietek", "Mietkowski", 50, "Sasha Grey", "kocham@sashe.com");
+    Candidate candidateTest = new Candidate("Mietek", "Mietkowski", 50, "Natura", "kocham@ad.com");
 
     @Test
     public void should_add_candidate() {
@@ -77,9 +77,26 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
         Assertions.assertThat(candidateList).doesNotContain(candidateById);
     }
 
-//    @Test
-//    public void shoud_update_
-//
-//    }
+    @Test
+    public void should_update_candidate(){
+        //given
+        candidateService.addCandidate(candidateTest);
+        candidateTest.setAge(100);
+        candidateTest.setFirstName("Karolina");
+        candidateTest.setHobbies("Filmy");
+        //when
+        candidateService.updateCandidateProfile(candidateTest);
+        Candidate candidateEditedById = candidateService.findCandidateProfileId(candidateTest.getId());
+        Iterable<Candidate> iterableList = candidateService.findAllCandidate();
+        List<Candidate> candidateList = new ArrayList<>();
+        iterableList.forEach(candidateList::add);
+        //then
+        Assertions.assertThat(candidateEditedById.getFirstName()).contains("Karolina");
+        Assertions.assertThat(candidateEditedById.getLastName()).contains("Mietkowski");
+        Assertions.assertThat(candidateEditedById.getAge()).isEqualTo(100);
+        Assertions.assertThat(candidateEditedById.getEmail()).contains("kocham@ad.com");
+        Assertions.assertThat(candidateList.size()).isEqualTo(1);
+
+    }
 
 }

@@ -70,7 +70,7 @@ public class CandidateController {
     //UPDATE CANDIDATE POST METHOD
     @RequestMapping(value = "updateCandidate.html", method = RequestMethod.POST)
     public ModelAndView editCandidate(@Valid Candidate candidate){
-        candidateService.updateCandidateProfile(candidate.getId(), candidate);
+        candidateService.updateCandidateProfile(candidate);
         return new  ModelAndView("candidateViews/editCandidateConfirmation");
     }
     //show list of employers
