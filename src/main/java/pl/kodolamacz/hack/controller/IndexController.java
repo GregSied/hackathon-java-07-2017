@@ -17,13 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 public class IndexController {
 
     @RequestMapping({"candidate","indexCandidate.html"})
-    public static ModelAndView getIndexCandidate(){
+    public ModelAndView getIndexCandidate(){
         ModelAndView modelAndView = new ModelAndView("indexCandidate");
         modelAndView.addObject("user", SecurityContext.getCurrentlyLoggedUser());
         return modelAndView;
     }
     @RequestMapping({"employer","indexEmployer.html"})
-    public static ModelAndView getIndexEmployer(){
+    public ModelAndView getIndexEmployer(){
         ModelAndView modelAndView = new ModelAndView("indexEmployer");
         modelAndView.addObject("user", SecurityContext.getCurrentlyLoggedUser());
         return modelAndView;
@@ -35,7 +35,7 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public static String adminPage(ModelMap model) {
+    public String adminPage(ModelMap model) {
         model.addAttribute("user", SecurityContext.getCurrentlyLoggedUser());
         return "admin";
     }
@@ -50,9 +50,26 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
-    public static String accessDeniedPage(ModelMap model) {
+    public String accessDeniedPage(ModelMap model) {
         model.addAttribute("user", SecurityContext.getCurrentlyLoggedUser());
         return "accessDenied";
     }
 
+    @RequestMapping(value = "/Access_Denied2", method = RequestMethod.GET)
+    public String accessDeniedPage2(ModelMap model) {
+        model.addAttribute("user", getPrincipal());
+        return "accessDeniedAlreadyLoggedIn";
+    }
+
+    private String getPrincipal() {
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails) principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        return userName;
+    }
 }

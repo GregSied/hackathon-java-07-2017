@@ -16,6 +16,7 @@
         <intercept-url pattern="/candidate**" access="hasRole('ADMIN') or hasRole('CANDIDATE')" />
         <form-login  authentication-failure-url="/Access_Denied"
             authentication-success-handler-ref="redirectHandler"/>
+        <access-denied-handler error-page="/Access_Denied2" />
     </http>
 
     <authentication-manager >

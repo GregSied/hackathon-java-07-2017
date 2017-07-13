@@ -77,4 +77,22 @@ public class CandidateRepositoryTest extends AbstractTransactionalJUnit4SpringCo
         Assertions.assertThat(output).isEqualTo(true);
     }
 
+    @Test
+    public void shouldDeleteCandidate() throws Exception {
+        //given
+        User user = User.admin("admin", "root123");
+        userRepository.save(user);
+        Employer employer = new Employer("karol", "karol@mail.com", "Krakow", 20, user);
+        employerRepository.save(employer);
+        Candidate candidate = new Candidate("Jan", "Kowalski", 25,"jazda na rowerze", "aksmxal@gmail.com", user);
+        //List<Candidate> candidates = new ArrayList<>();
+        //candidates.add(candidate);
+        candidateRepository.save(candidate);
+        //when
+        long candidateInputCounter = candidateRepository.count();
+        candidateRepository.delete(candidate);
+        long candidateOutputCounter = candidateRepository.count();
+        //then
+        Assertions.assertThat(candidateInputCounter-candidateOutputCounter).isEqualTo(1);
+    }
 }

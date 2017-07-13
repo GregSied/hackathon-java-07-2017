@@ -34,6 +34,11 @@
         <s:message code="index.viewJobs"/>
     </a>
 </li>
+<li>
+    <a href="<c:url value="/message/users"/>">
+        <s:message code="candidate.sendMessage"/>
+    </a>
+</li>
 
 <br>
     <a href="/">
