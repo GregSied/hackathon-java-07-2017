@@ -2,6 +2,7 @@ package pl.kodolamacz.hack.service;
 
 
 import org.assertj.core.api.Assertions;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,12 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
 
     @Autowired
     private EmployerService employerService;
+
+    @Before
+    public void before(){
+        jdbcTemplate.execute("truncate employer cascade");
+        employerService.addNewEmployerProfile(new Employer("Katarzyna Duczyk","kasia@op.pl","Poznan",12));
+    }
 
     @Test
     public void shouldAddEmployer(){
@@ -60,6 +67,26 @@ public class EmployerServiceTest extends AbstractTransactionalJUnit4SpringContex
         //then
         Assertions.assertThat(foundEmployer.getName()).isEqualTo(employer.getName());
 
+    }
+
+    @Test
+    public void shouldFindEmployerByName(){
+        //given
+        //when
+        List<Employer> foundEmployers = employerService.findEmployersByName("Katarzyna Duczyk");
+        //then
+        Assertions.assertThat(foundEmployers.size()).isEqualTo(1);
+        Assertions.assertThat(foundEmployers.get(0).getName()).isEqualTo("Katarzyna Duczyk");
+
+    }
+
+    @Test
+    public void shouldFindEmployerByNameSubstring(){
+        //when
+        List<Employer> foundEmployers = employerService.findEmployersByNameLike("Duczy");
+        //then
+        Assertions.assertThat(foundEmployers.size()).isEqualTo(1);
+        Assertions.assertThat(foundEmployers.get(0).getName()).isEqualTo("Katarzyna Duczyk");
     }
 
 
