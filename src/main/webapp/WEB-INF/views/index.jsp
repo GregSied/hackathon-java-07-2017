@@ -11,7 +11,7 @@
 <h1>Choose your role:</h1>
 <br>
 <li>
-    <a href="/candidate">
+    <a href="<c:url value="/candidate"/>">
         Candidate
     </a>
 </li>
@@ -32,5 +32,6 @@
         Register as Candidate
     </a>
 </li>
+<img src="https://d2m2lkhawsaq1u.cloudfront.net/uploads/trial/sasha-grey-1-588_1399760242.jpg" style="width:400px;height:560px;">
 </body>
 </html>
