@@ -18,13 +18,14 @@ import javax.validation.Valid;
  * Created by Pingwinek on 2017-07-12.
  */
 @Controller
+@RequestMapping("/job")
 public class JobController {
 
     @Autowired
     JobService jobService;
 
     //SHOW ALL JOBS - SASHA GREY
-    @RequestMapping("show-jobs.html")
+    @RequestMapping("/jobs")
     public ModelAndView getAllJob() {
         ModelAndView modelAndView = new ModelAndView("jobViews/showJobs");
         modelAndView.addObject("jobs", jobService.findAllJob());
