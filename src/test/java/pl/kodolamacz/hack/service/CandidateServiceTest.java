@@ -26,10 +26,10 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
     @Autowired
     private CandidateService candidateService;
 
-    Candidate candidateTest = new Candidate("Mietek","Mietkowski",50,"Sasha Grey","kocham@sashe.com");
+    Candidate candidateTest = new Candidate("Mietek", "Mietkowski", 50, "Sasha Grey", "kocham@sashe.com");
 
     @Test
-    public void should_add_candidate(){
+    public void should_add_candidate() {
         //given
         //when
         candidateService.addCandidate(candidateTest);
@@ -38,46 +38,48 @@ public class CandidateServiceTest extends AbstractTransactionalJUnit4SpringConte
         Assertions.assertThat(candidateById.getFirstName()).isEqualTo("Mietek");
 
     }
+
     @Test
-    public void should_list_all_candidate(){
+    public void should_list_all_candidate() {
         //given
+        candidateService.addCandidate(candidateTest);
         //when
-        Iterable<Candidate> iterableList=candidateService.findAllCandidate();
-        List<Candidate> candidateList= new ArrayList<>();
+        Iterable<Candidate> iterableList = candidateService.findAllCandidate();
+        List<Candidate> candidateList = new ArrayList<>();
         iterableList.forEach(candidateList::add);
-
-
         //then
         Assertions.assertThat(candidateList.size()).isGreaterThan(0);
 
     }
 
     @Test
-    public void should_list_candidate_by_id(){
+    public void should_find_candidate_by_id() {
         //given
-        //when
         candidateService.addCandidate(candidateTest);
-        Candidate candidateById = candidateService.findCandidateProfileId(1L);
+        //when
+        Candidate candidateById = candidateService.findCandidateProfileId(candidateTest.getId());
         //then
-        Assertions.assertThat(candidateById.getFirstName()).isNotNull();
+        Assertions.assertThat(candidateById.getFirstName()).contains("Mietek");
         Assertions.assertThat(candidateById.getFirstName()).isNotEmpty();
     }
 
     @Test
-    public void should_remove_candidate_by_id(){
+    public void should_remove_candidate_by_id() {
         //given
         candidateService.addCandidate(candidateTest);
         Candidate candidateById = candidateService.findCandidateProfileId(candidateTest.getId());
         //when
         candidateService.removeCandidateProfile(candidateById.getId());
-        Iterable<Candidate> iterableList=candidateService.findAllCandidate();
-        List<Candidate> candidateList= new ArrayList<>();
+        Iterable<Candidate> iterableList = candidateService.findAllCandidate();
+        List<Candidate> candidateList = new ArrayList<>();
         iterableList.forEach(candidateList::add);
         //then
         Assertions.assertThat(candidateList).doesNotContain(candidateById);
     }
 
-        //TODO UPDATE TEST
+//    @Test
+//    public void shoud_update_
+//
+//    }
 
-    }
-
+}
