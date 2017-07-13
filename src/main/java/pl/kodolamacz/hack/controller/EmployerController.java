@@ -41,7 +41,7 @@ public class EmployerController {
     }
 
     @RequestMapping(value = "editEmployer.html", method = RequestMethod.GET)
-    public ModelAndView showEditEmployer(@RequestParam Long id){
+    public ModelAndView showEditEmployer(){
         return new ModelAndView(
                 "/employerViews/editEmployer","employer", employerService.findByUser(SecurityContext.getCurrentlyLoggedUser()));
     }
