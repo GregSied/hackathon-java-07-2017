@@ -51,7 +51,10 @@ public class JobService {
         return jobRepository.findByTitle(title);
 
     }
+    List<Job> findJobsByEmployerId(Long id){
 
+        return jobRepository.findJobsByEmployerId(id);
+    }
 
 }
 
